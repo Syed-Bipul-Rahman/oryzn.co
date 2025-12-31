@@ -1,275 +1,724 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Zilly - Online Grocery Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#008A5E", // Zilly Green
+                        secondary: "#EF4444", // Sale Red
+                        accent: "#FACC15", // Search Yellow
+                        "background-light": "#F3F4F6",
+                        "background-dark": "#111827",
+                        "surface-light": "#FFFFFF",
+                        "surface-dark": "#1F2937",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                        body: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.375rem",
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 transition-colors duration-200">
+<header class="sticky top-0 z-50 bg-primary dark:bg-primary shadow-lg">
+<div class="container mx-auto px-4 py-3 flex items-center justify-between gap-4">
+<button class="lg:hidden text-white">
+<span class="material-icons">menu</span>
+</button>
+<div class="flex items-center gap-2">
+<div class="bg-white p-1 rounded-lg">
+<span class="material-icons text-primary text-3xl">shopping_basket</span>
+</div>
+<span class="text-2xl font-bold text-white tracking-tight">Zilly</span>
+</div>
+<div class="hidden lg:flex flex-1 max-w-2xl mx-4">
+<div class="flex w-full">
+<select class="bg-gray-100 text-gray-700 text-sm px-4 py-2 rounded-l-md border-r border-gray-300 focus:outline-none focus:ring-0 cursor-pointer">
+<option>All Categories</option>
+<option>Groceries</option>
+<option>Electronics</option>
+</select>
+<input class="w-full px-4 py-2 text-gray-700 bg-white border-none focus:ring-0" placeholder="Type Your Products ..." type="text"/>
+<button class="bg-accent hover:bg-yellow-400 text-gray-900 font-medium px-6 py-2 rounded-r-md flex items-center transition">
+<span class="material-icons text-xl">search</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-6 text-white">
+<div class="hidden xl:flex flex-col text-xs text-right leading-tight">
+<span class="opacity-80">Call Us Now</span>
+<span class="font-bold text-sm">+9888-256-666</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 hover:bg-green-700/30 px-3 py-1.5 rounded-full transition">
+<span class="material-icons text-2xl">person_outline</span>
+<span class="hidden md:block text-sm font-medium">Accounts</span>
+</button>
+<button class="relative hover:bg-green-700/30 p-2 rounded-full transition">
+<span class="material-icons text-2xl">favorite_border</span>
+<span class="absolute top-0 right-0 bg-accent text-gray-900 text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+</button>
+<button class="relative hover:bg-green-700/30 p-2 rounded-full transition">
+<span class="material-icons text-2xl">shopping_cart</span>
+<span class="absolute top-0 right-0 bg-accent text-gray-900 text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<div class="container mx-auto px-4 py-6 flex gap-6">
+<aside class="w-64 flex-shrink-0 hidden lg:block">
+<div class="bg-surface-light dark:bg-surface-dark rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden sticky top-24">
+<ul class="flex flex-col py-2">
+<li><a class="flex items-center gap-3 px-4 py-3 hover:bg-green-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 transition" href="#"><span class="material-icons text-gray-400 text-xl">storefront</span> Shop</a></li>
+<li><a class="flex items-center gap-3 px-4 py-3 hover:bg-green-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 transition" href="#"><span class="material-icons text-gray-400 text-xl">local_offer</span> Offers</a></li>
+<li><a class="flex items-center gap-3 px-4 py-3 hover:bg-green-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 transition" href="#"><span class="material-icons text-gray-400 text-xl">watch_later</span> Daily Deals</a></li>
+<li class="border-t border-gray-100 dark:border-gray-700 my-1"></li>
+<li><a class="flex items-center justify-between px-4 py-3 hover:bg-green-50 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-icons text-gray-400 group-hover:text-primary text-xl">coffee</span> Beverage
+                        </div>
+<span class="text-xs text-gray-400 font-medium">(8)</span>
+</a></li>
+<li><a class="flex items-center justify-between px-4 py-3 hover:bg-green-50 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-icons text-gray-400 group-hover:text-primary text-xl">cake</span> Desserts
+                        </div>
+<span class="text-xs text-gray-400 font-medium">(9)</span>
+</a></li>
+<li><a class="flex items-center justify-between px-4 py-3 hover:bg-green-50 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-icons text-gray-400 group-hover:text-primary text-xl">local_drink</span> Drinks &amp; Juice
+                        </div>
+<span class="text-xs text-gray-400 font-medium">(6)</span>
+</a></li>
+<li><a class="flex items-center justify-between px-4 py-3 hover:bg-green-50 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-icons text-gray-400 group-hover:text-primary text-xl">set_meal</span> Fish &amp; Meats
+                        </div>
+<span class="text-xs text-gray-400 font-medium">(6)</span>
+</a></li>
+<li><a class="flex items-center justify-between px-4 py-3 hover:bg-green-50 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-icons text-gray-400 group-hover:text-primary text-xl">apple</span> Fresh Fruits
+                        </div>
+<span class="text-xs text-gray-400 font-medium">(8)</span>
+</a></li>
+<li><a class="flex items-center justify-between px-4 py-3 hover:bg-green-50 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-icons text-gray-400 group-hover:text-primary text-xl">pets</span> Pets &amp; Animals
+                        </div>
+<span class="text-xs text-gray-400 font-medium">(4)</span>
+</a></li>
+<li><a class="flex items-center justify-between px-4 py-3 hover:bg-green-50 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-icons text-gray-400 group-hover:text-primary text-xl">toys</span> Toys
+                        </div>
+<span class="text-xs text-gray-400 font-medium">(3)</span>
+</a></li>
+</ul>
+</div>
+</aside>
+<main class="flex-1 w-full min-w-0">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+<div class="bg-orange-100 dark:bg-orange-900/30 rounded-lg p-4 relative overflow-hidden h-40 group">
+<div class="relative z-10 w-2/3">
+<h3 class="font-bold text-gray-900 dark:text-white text-lg leading-tight mb-2">Creamy Fruits baby Jem</h3>
+<span class="bg-yellow-400 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">$12.99</span>
+<button class="block bg-gray-800 hover:bg-gray-700 text-white text-xs px-3 py-1.5 rounded transition mt-2">Shop Now</button>
+</div>
+<img alt="Fruits" class="absolute -bottom-2 -right-2 w-28 h-28 object-contain transform group-hover:scale-105 transition duration-300 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNBeEvesDR2ZJI8kyOpfQWBGsqYr3qTfkC_xq__PkTAfwqn0ey512FArFvpxZ4M-dVKu_i0hB-cMvTUuSKvi7ZvEnFxuSTJIYae6b056l_NRrFK7fZq9EZNHZZfDgXIgbwNQ2Ci2H-qlZce3c5piKsaSu7chc-79wjJpONEEopmrEpwgZ11FJQxxF8HjZmVNdkKjimoLCN2cc25KWXPKCzoRJ61Yn65dxU6p2Ckicr0AE_919aLZ1FtPMG9p4l0JVzN-HUcWXZMw4G"/>
+</div>
+<div class="bg-green-100 dark:bg-green-900/30 rounded-lg p-4 relative overflow-hidden h-40 group">
+<div class="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-bl-lg z-20">20% Off</div>
+<div class="relative z-10 w-2/3">
+<h3 class="font-bold text-gray-900 dark:text-white text-lg leading-tight mb-2">100% Fresh Vegetables</h3>
+<button class="block bg-gray-800 hover:bg-gray-700 text-white text-xs px-3 py-1.5 rounded transition mt-4">Shop Now</button>
+</div>
+<img alt="Vegetables" class="absolute bottom-2 -right-4 w-32 h-24 object-cover transform group-hover:scale-105 transition duration-300 rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGNG_wotn-5DrxpY23r7v5IJYZ93y2m0vc5jnWIkLSYOO3IObylvsSTG8GKgcaMdOCtxAzs6vhP0K0q-W1Hx8ipwlouwa5dDqOTANfPg8p1pzqPWSnlEpESTQN43i9O1XwUrjO2YJ196glkZ0P7Bgp4ew28zd4afitpEmQdsrbtEfobvhrMaTWfP-LsHrLuPlTb0cMaF8gwm8pOFgJ7wqVxwcLTFN5Li8CeWl8YXRpWyzp0JblS94X61iTQaSaCSUUQ6hlaxB2e_LN"/>
+</div>
+<div class="bg-blue-100 dark:bg-blue-900/30 rounded-lg p-4 relative overflow-hidden h-40 group">
+<div class="relative z-10 w-2/3">
+<h3 class="font-bold text-gray-900 dark:text-white text-lg leading-tight mb-2">Pure Farm Fresh Milk</h3>
+<button class="block bg-gray-800 hover:bg-gray-700 text-white text-xs px-3 py-1.5 rounded transition mt-4">Shop Now</button>
+</div>
+<img alt="Milk" class="absolute top-4 -right-2 w-24 h-32 object-contain transform group-hover:scale-105 transition duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHdywoQp8x-DvExKG9jdQ3jp-3Rj8yTxPDJqfRRrrvNX2drjP1WJl991lzkR_rUrNNyeiKesACxSt8kRMCp2e-BV7WlYXl-AjBM84RMXG34AT7EUcA0cMaHi2RyyWEhlAkgBIY5JUhXCO75tvyqM5qA9P5HrBP8JTTd0bzzXDC-9emZxwgJ5GuVMCgbvn-TaMplDPu-hEcOc_aMClyTDlVOGYnhxB_AczxoLSSz-gDKMoDl_Ag7KecWCOoVq4j08Swv9IQ1ZmykasK"/>
+</div>
+<div class="bg-yellow-100 dark:bg-yellow-900/30 rounded-lg p-4 relative overflow-hidden h-40 group">
+<div class="relative z-10 w-2/3">
+<h3 class="font-bold text-gray-900 dark:text-white text-lg leading-tight mb-2">Creamy Fruits baby Jem</h3>
+<span class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded mb-2 inline-block">$12.99</span>
+<button class="block bg-gray-800 hover:bg-gray-700 text-white text-xs px-3 py-1.5 rounded transition mt-2">Shop Now</button>
+</div>
+<img alt="Fruit" class="absolute bottom-0 -right-2 w-28 h-28 object-contain transform group-hover:scale-105 transition duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqvtrH1mWeMJ2J6emSQzudipfbUHzOJ_Y8gYqRDFFwpjeYdAWcoBQ8hr2-6s0x8udiAqxZ8VsnsNM3-V78XTS3OcMIwPu0XPPf72oZZBSmKOHnGJKToZPmvYhrJ9S8DthYKHbKg581zowLDWOAwFS-BffcfzH9BeDrwyEOtaL4F8ngFqOiTfCwSKzfdwW1iSMWBxxkst_IAgLCew6BAx01H-C_h48_4C_H7Nrv_8Vnz2Z4U08Ws4p-vrDA2YGmYhLO2Adzfy24y4b9"/>
+</div>
+</div>
+<div class="bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/30 rounded-xl p-6 mb-8">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-xl font-bold text-gray-900 dark:text-white relative">
+                        Today's Hot Sale
+                        <span class="block h-1 w-12 bg-secondary mt-1 rounded-full"></span>
+</h2>
+<div class="flex gap-2">
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-white dark:bg-gray-800 text-gray-500 hover:bg-primary hover:text-white transition shadow-sm border border-gray-200 dark:border-gray-700">
+<span class="material-icons text-sm">arrow_back_ios_new</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-white dark:bg-gray-800 text-gray-500 hover:bg-primary hover:text-white transition shadow-sm border border-gray-200 dark:border-gray-700">
+<span class="material-icons text-sm">arrow_forward_ios</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+<div class="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-100 dark:border-gray-700 hover:shadow-lg transition group">
+<div class="relative mb-3 h-32 flex items-center justify-center">
+<img alt="Product" class="h-28 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAg6v1DUzBpPbBT61MrwbnFduLcslHokpNxcQ57gPtHHWSPXXk1m4s6urhh_lCU6Ui-6VK1PbH410Y2RYuMCdk9rgxRiZsFYIv1nnkeHzYNU347r7Y6PL6ISDy0W6PR9FTJFlEHnbMjs-voTwThGzCjJICdqHMkdbi9UHEZWQZLT0Ws3yAWiEo1ABOBHVfVegTT5nezZ2-6RZ32RpI9BxKd004CQXI45DG0e7KsBvGyoFXZnG5tt5D3WiA6k8QgdQVF2U_3S7sD78a"/>
+<span class="absolute top-0 left-0 text-[10px] text-gray-500 bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5 rounded">Vegetables</span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold text-gray-900 dark:text-white">$30.00</span>
+<span class="text-xs text-gray-400 line-through">$38.00</span>
+</div>
+<span class="text-[10px] text-white bg-secondary px-1.5 py-0.5 rounded">-16%</span>
+<h3 class="text-sm font-medium text-gray-700 dark:text-gray-200 line-clamp-2 group-hover:text-primary transition">Russet Idaho Potatoes Fre...</h3>
+<div class="flex items-center text-yellow-400 text-xs">
+<span class="material-icons text-[14px]">star</span>
+<span class="material-icons text-[14px]">star</span>
+<span class="material-icons text-[14px]">star</span>
+<span class="material-icons text-[14px]">star</span>
+<span class="material-icons text-[14px]">star_half</span>
+<span class="text-gray-400 ml-1 text-[10px]">(5.00)</span>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-100 dark:border-gray-700 hover:shadow-lg transition group">
+<div class="relative mb-3 h-32 flex items-center justify-center">
+<img alt="Product" class="h-28 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuz6mJ_dHPn_EVGsXeELBKNZFdjyHPxUVg-8-L8SgcilHvNcNgOCQs0sVkcM1sAgag5BRc7cy2XWiUucQ517vMY9fHKQF4CRqsfpXXFc740FYeYyoSp1g4mF85KTh3EbdRJKsCM0j3Mozu-QYNs5uih1t0LBCS8HmDh-lh8n1nZen7VZo3vVpe3rrRt0WIObwvJwJEfLuRppSVJ5e1jktrjjgrhQHoub_rElSh8-twMJT5x-LLjaI4j_lvqYGzwHRWIliHHBMeWiPX"/>
+<span class="absolute top-0 left-0 text-[10px] text-gray-500 bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5 rounded">Desserts</span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold text-gray-900 dark:text-white">$25.00</span>
+<span class="text-xs text-gray-400 line-through">$30.00</span>
+</div>
+<span class="text-[10px] text-white bg-secondary px-1.5 py-0.5 rounded">-44%</span>
+<h3 class="text-sm font-medium text-gray-700 dark:text-gray-200 line-clamp-2 group-hover:text-primary transition">Aptamil Gold+ ProNutra...</h3>
+<div class="flex items-center text-yellow-400 text-xs">
+<span class="material-icons text-[14px]">star</span>
+<span class="material-icons text-[14px]">star</span>
+<span class="material-icons text-[14px]">star</span>
+<span class="material-icons text-[14px]">star</span>
+<span class="material-icons text-[14px]">star</span>
+<span class="text-gray-400 ml-1 text-[10px]">(5.00)</span>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-100 dark:border-gray-700 hover:shadow-lg transition group">
+<div class="relative mb-3 h-32 flex items-center justify-center">
+<img alt="Product" class="h-28 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwYk0tEbCHthhVa-Jk0sqKIwHluNE06Ucw2LKVDCFaaRH_ulQcwLJq4etsGpUlC5YVYbilf0uROten-Yg4m06ZFhoVF3z2CNWnnQaeUG-OP0eBONSHLcLmCjYAhoYQsOfLUNKP_BsiieuqcQyE6-wjsXw4eIjA3h7QVJEwWBQURE9bb0xv006s1hDL8hH4o3YodOFjPwPRpaX_xWQg0w9MNGB2vGA2ai3CAdodjW2xFbkTSOMB0hyalaI65hueqFXVJ_endznnl9jH"/>
+<span class="absolute top-0 left-0 text-[10px] text-gray-500 bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5 rounded">Fresh Fruits</span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold text-gray-900 dark:text-white">$52.00</span>
+<span class="text-xs text-gray-400 line-through">$56.00</span>
+</div>
+<span class="text-[10px] text-white bg-secondary px-1.5 py-0.5 rounded">-7%</span>
+<h3 class="text-sm font-medium text-gray-700 dark:text-gray-200 line-clamp-2 group-hover:text-primary transition">Maxican Nature's...</h3>
+<div class="flex items-center text-yellow-400 text-xs">
+<span class="material-icons text-[14px]">star</span>
+<span class="material-icons text-[14px]">star</span>
+<span class="material-icons text-[14px]">star</span>
+<span class="material-icons text-[14px]">star</span>
+<span class="material-icons text-[14px]">star_border</span>
+<span class="text-gray-400 ml-1 text-[10px]">(5.00)</span>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-100 dark:border-gray-700 hover:shadow-lg transition group">
+<div class="relative mb-3 h-32 flex items-center justify-center">
+<img alt="Product" class="h-28 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmOAoq3ivR0CZOPoGUazSUXPxNjd3WXcCHVzC3jckpEqzq5k6c46bRAKH2Brcg3vulmMgidt8wjIPx-DFEDsjakkyFYxXPrEMBm0exgRB8zg5hN1nNnXs_jlfdy9OBHIL-kqxQXW_iZTLl5FOU-FrQsNT8aO_OF9H-3pK8y7lTlt5kci-6Gzg3Xqf3CBUX7LYbX423ii9gEYf3wmPk2F3UjmtsRK9LEoizgq4lsQ8RF4lmKnyyUgGVXtjU-4D4wOZinlxke5PSy66V"/>
+<span class="absolute top-0 left-0 text-[10px] text-gray-500 bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5 rounded">Drinks &amp; Juice</span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold text-gray-900 dark:text-white">$30.00</span>
+<span class="text-xs text-gray-400 line-through">$34.00</span>
+</div>
+<span class="text-[10px] text-white bg-secondary px-1.5 py-0.5 rounded">-12%</span>
+<h3 class="text-sm font-medium text-gray-700 dark:text-gray-200 line-clamp-2 group-hover:text-primary transition">Diet A&amp;W Root Beer</h3>
+<div class="flex items-center text-yellow-400 text-xs">
+<span class="material-icons text-[14px]">star</span>
+<span class="material-icons text-[14px]">star</span>
+<span class="material-icons text-[14px]">star</span>
+<span class="material-icons text-[14px]">star</span>
+<span class="material-icons text-[14px]">star</span>
+<span class="text-gray-400 ml-1 text-[10px]">(5.00)</span>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-100 dark:border-gray-700 hover:shadow-lg transition group">
+<div class="relative mb-3 h-32 flex items-center justify-center">
+<img alt="Product" class="h-28 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW1vV8IgzPoi0NMEdkoLg2bVGvSMlOlnlaLeRYKhhX3G5GQs-CCSVk1y5wL4GaJxHWureP5m8pQJD1QHYyMpEKeiDRnpQQasSFOyp13MPwNKRIOeNcRKn0bR5141iJeZGHrZU7M_yAMo4vTZAZZYofd4pdzif2rn-uhRgPSuE8aKKQq65cmKyjc2nrgtC66jGjHrUzJ_X8Ylqx6Oaj4Qn35jAUYsgcjZyn0OgLcN1hV6B5ovfIya2RJIEkWT0IE7xUI4R_BvsuqAIN"/>
+<span class="absolute top-0 left-0 text-[10px] text-gray-500 bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5 rounded">Vegetables</span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold text-gray-900 dark:text-white">$3.00 - $8.00</span>
+</div>
+<span class="text-[10px] text-white bg-secondary px-1.5 py-0.5 rounded">Out of Stock</span>
+<h3 class="text-sm font-medium text-gray-700 dark:text-gray-200 line-clamp-2 group-hover:text-primary transition">Whole Foods Market, Organic...</h3>
+<div class="flex items-center text-yellow-400 text-xs">
+<span class="material-icons text-[14px]">star</span>
+<span class="material-icons text-[14px]">star</span>
+<span class="material-icons text-[14px]">star</span>
+<span class="material-icons text-[14px]">star</span>
+<span class="material-icons text-[14px]">star</span>
+<span class="text-gray-400 ml-1 text-[10px]">(5.00)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mb-8">
+<div class="flex items-center justify-between mb-4 border-b border-gray-100 dark:border-gray-700 pb-2">
+<h2 class="text-xl font-bold text-gray-900 dark:text-white relative">
+                        Fresh Vegetables
+                        <span class="block h-0.5 w-16 bg-primary mt-3 absolute bottom-[-1px]"></span>
+</h2>
+<div class="flex gap-2">
+<button class="w-7 h-7 flex items-center justify-center rounded-md border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-500 hover:text-primary hover:border-primary dark:hover:border-primary transition">
+<span class="material-icons text-sm">chevron_left</span>
+</button>
+<button class="w-7 h-7 flex items-center justify-center rounded-md border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-500 hover:text-primary hover:border-primary dark:hover:border-primary transition">
+<span class="material-icons text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+<div class="bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-100 dark:border-gray-700 hover:shadow-md transition group">
+<div class="h-28 flex items-center justify-center mb-2">
+<img alt="Veg" class="h-20 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVyij7ICLB73zM_-90CYD1VjYeh98ZgQk9JFwwyTfUtBB0Fm1HOnCJyiD9bumwQaXeTq5rq6qmCkUTfGpLAk8gBEh2KV2UMsOBOJnQRx-XZoMS6EMqjJ8vUw6cA6F2kNyFn5fPx2_Dbxfc47QxyVpxbLzax6VdsEFKwhv5aAytHeHQopqYFiqcAjjARHZ1ugLefyTJZ8GNEl15LibRNBs37o-N1ogKX9F-USPNQLJ1KU7rc1lSapEVzXgAGQ1mhqoW1Uqq_O5k7iOj"/>
+</div>
+<span class="text-xs text-red-500 font-bold block mb-1">Out of Stock</span>
+<h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 line-clamp-2 mb-1 group-hover:text-primary">Organic Trimmed Green Beans</h3>
+<div class="flex items-center text-yellow-400 text-[10px]">
+<span class="material-icons text-[10px]">star</span>
+<span class="material-icons text-[10px]">star</span>
+<span class="material-icons text-[10px]">star</span>
+<span class="material-icons text-[10px]">star</span>
+<span class="material-icons text-[10px]">star</span>
+</div>
+</div>
+<div class="bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-100 dark:border-gray-700 hover:shadow-md transition group">
+<div class="h-28 flex items-center justify-center mb-2">
+<img alt="Veg" class="h-20 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZXSqY1h-uHM6Ps1xycXYWmgQ0HFmFMFkdxNOzqTbZ-IhRlMSn51y7fqUs2sAsyZKIr9iG6HYdE-TPS5lzm9umHphoMLrJr39aM-GSiPP8ktPgu-e8digD9NRwdTI5UhmrtPAVHpIdEwbTkjncICMN3keLH6IMnznAigFILbohsIlDpNxtZLSZhOJrSO4TVSJHEZpxAxIsnMRgRaHfVTW5OyKkeJvfUqAnhcS6B5E21gQZkKr_YRpdeyYY8GYOcRZYVzlK4Ink_h1N"/>
+</div>
+<div class="flex gap-1 mb-1 items-baseline">
+<span class="text-xs font-bold dark:text-white">$19.00</span>
+<span class="text-[10px] text-gray-400 line-through">$22.00</span>
+</div>
+<span class="text-[9px] text-white bg-red-500 px-1 rounded inline-block mb-1">-14%</span>
+<h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 line-clamp-2 mb-1 group-hover:text-primary">Whole Foods Market, Romaine Hearts</h3>
+<div class="flex items-center text-yellow-400 text-[10px]">
+<span class="material-icons text-[10px]">star</span>
+<span class="material-icons text-[10px]">star</span>
+<span class="material-icons text-[10px]">star</span>
+<span class="material-icons text-[10px]">star</span>
+<span class="material-icons text-[10px]">star</span>
+</div>
+</div>
+<div class="bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-100 dark:border-gray-700 hover:shadow-md transition group">
+<div class="h-28 flex items-center justify-center mb-2">
+<img alt="Veg" class="h-20 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJr5LZDM_UyjR6JXx81Rs6tSWvGelEG5l7DpznXhkyY87LnB_HcYvU2Q8AXYPxYKYGgwa3MCYscZU_-9r651uTpmwcZcAx5lXRg7HiqG52TrniMGwcVQVK660GlQ0RNYLMMfIbW8PSgv0s3ew-OmwpvzuyG4CC07VlRmYE5TnBQolFgFndtglV_Pp1bTG5tPna4tELFqZYHTTOPyfJojWHSWFIxv8-kuayvlw-aoc5E7CKP7V5YmpSZJ-G-5zhvb3-5S48m4EDyGm1"/>
+</div>
+<div class="flex gap-1 mb-1 items-baseline">
+<span class="text-xs font-bold dark:text-white">$18.00</span>
+<span class="text-[10px] text-gray-400 line-through">$45.00</span>
+</div>
+<span class="text-[9px] text-white bg-red-500 px-1 rounded inline-block mb-1">-33%</span>
+<h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 line-clamp-2 mb-1 group-hover:text-primary">Fresh and Sweet Watermelon</h3>
+<div class="flex items-center text-yellow-400 text-[10px]">
+<span class="material-icons text-[10px]">star</span>
+<span class="material-icons text-[10px]">star</span>
+<span class="material-icons text-[10px]">star</span>
+<span class="material-icons text-[10px]">star</span>
+<span class="material-icons text-[10px]">star</span>
+</div>
+</div>
+<div class="bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-100 dark:border-gray-700 hover:shadow-md transition group">
+<div class="h-28 flex items-center justify-center mb-2">
+<img alt="Veg" class="h-20 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeDN-KcwZblONxPAEnhi3SIqUpC5Rh6ekp4b2BWR3BkbOLoSndeiSVAW5P4oovcRSSZ1Ykf1CxP-MRne1fTQzl8OJ5VaYTyoWTcImE5QyG70GfZa8EN2c7a_CqGp_2PTCxoo-akIq2TPdeCrWP8TILBsqjctHNUwzFcLgrsuHAumvYUWcOEaeB4oTMzhcAZypyl6Aw_GYyj_GxuriQTtwACWpgOUIh2H45oEO1pdNm4Li63Xezhq_CUvTrbd5DkrN14DFJHrqqS3Os"/>
+</div>
+<div class="flex gap-1 mb-1 items-baseline">
+<span class="text-xs font-bold dark:text-white">$22.00</span>
+<span class="text-[10px] text-gray-400 line-through">$28.00</span>
+</div>
+<span class="text-[9px] text-white bg-red-500 px-1 rounded inline-block mb-1">-21%</span>
+<h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 line-clamp-2 mb-1 group-hover:text-primary">Avocado Creamy Elegance Pure</h3>
+<div class="flex items-center text-yellow-400 text-[10px]">
+<span class="material-icons text-[10px]">star</span>
+<span class="material-icons text-[10px]">star</span>
+<span class="material-icons text-[10px]">star</span>
+<span class="material-icons text-[10px]">star</span>
+<span class="material-icons text-[10px]">star</span>
+</div>
+</div>
+<div class="bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-100 dark:border-gray-700 hover:shadow-md transition group">
+<div class="h-28 flex items-center justify-center mb-2">
+<img alt="Veg" class="h-20 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5KjW_hukmpF6rmlp2i9QO9dQL2E3hRvw2Dd1a2q5ficU6V3EM9JqhsFuJ5Ap_m6UY6U8kqYnoW1r-RNoKOlx4kJwM6MiM2KfGQ0kZl0HPRe15xjjSEdcXmPjVdzLLasaT9V_dPb-5mBKHIMYAOnO-GVsRAU3meen_kWwnRLBDM0quQzKa5fWhvNjToSuPvGKeKIyNzy87OR91mkx_bq7Pv4lvsQla0pKu0bupQ1OYE19Afy9_v7NpnRiVFtOwvSzN1PQjGojloL2h"/>
+</div>
+<div class="flex gap-1 mb-1 items-baseline">
+<span class="text-xs font-bold dark:text-white">$53.00</span>
+</div>
+<h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 line-clamp-2 mb-1 group-hover:text-primary">Cantaloupe Melon Fresh Organic Cut</h3>
+<div class="flex items-center text-yellow-400 text-[10px]">
+<span class="material-icons text-[10px]">star</span>
+<span class="material-icons text-[10px]">star</span>
+<span class="material-icons text-[10px]">star</span>
+<span class="material-icons text-[10px]">star</span>
+<span class="material-icons text-[10px]">star</span>
+</div>
+</div>
+<div class="bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-100 dark:border-gray-700 hover:shadow-md transition group">
+<div class="h-28 flex items-center justify-center mb-2">
+<img alt="Veg" class="h-20 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBET_4JYr2O2AvvvRli3TERUUpbH6pxj-7t1GHCLPPG8-vuvWaUJCC6f53bP7AAlOptELPPl94FQUac4asbZIuMgyw-VkBNbN3-AifQXbnXnkxkUfF8KUo3NctWIwPwa622IQ7juCYH65COQK-crTpHxl1nh0Arg4jXpRnUk9lejj53KsvrUXRtCPlXg1szS1qZfy8noCzMzlRxrHo4j_0xw0rDGzU8vC9yXryDgmt42ogMNCdyuuFyQEKGlBG-yARQl5nzs7TA6di"/>
+</div>
+<div class="flex gap-1 mb-1 items-baseline">
+<span class="text-xs font-bold dark:text-white">$47.00</span>
+</div>
+<h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 line-clamp-2 mb-1 group-hover:text-primary">Guava Organic Fruits</h3>
+<div class="flex items-center text-yellow-400 text-[10px]">
+<span class="material-icons text-[10px]">star</span>
+<span class="material-icons text-[10px]">star</span>
+<span class="material-icons text-[10px]">star</span>
+<span class="material-icons text-[10px]">star</span>
+<span class="material-icons text-[10px]">star_border</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mb-8">
+<div class="flex items-center justify-between mb-4 border-b border-gray-100 dark:border-gray-700 pb-2">
+<h2 class="text-xl font-bold text-gray-900 dark:text-white relative">
+                        Frozen Food
+                        <span class="block h-0.5 w-16 bg-primary mt-3 absolute bottom-[-1px]"></span>
+</h2>
+<div class="flex gap-2">
+<button class="w-7 h-7 flex items-center justify-center rounded-md border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-500 hover:text-primary hover:border-primary dark:hover:border-primary transition">
+<span class="material-icons text-sm">chevron_left</span>
+</button>
+<button class="w-7 h-7 flex items-center justify-center rounded-md border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-500 hover:text-primary hover:border-primary dark:hover:border-primary transition">
+<span class="material-icons text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+<div class="bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-100 dark:border-gray-700 hover:shadow-md transition">
+<img alt="Chips" class="h-28 mx-auto object-contain mb-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBStj5wumYtkB-D6t0mIZAI_kxWs-CbwGdzvxuDm_mhP8D8nMNW3u4dJL5lJIQPRPJCbCZEvsz_sGMEjQhbgh7FRrfn_ruZ_0tUnWglQXMs2TDZ6Ata661JwHHz2fuffnLHP-lZ60bJyyOfC_rJgWouxucN1_cKYX4OULgtdzoCxaZ7ii6Xk86ZUpC-xOTUxbgYeMwMOtmY2d0jwniBv9LPHEU7YPIAG6p2STHchueO0Igte7XAYI5PPSnrD0T523gFmc4morEd-O9y"/>
+<span class="text-[9px] text-white bg-red-500 px-1 rounded inline-block mb-1">-43%</span>
+<div class="flex gap-1 mb-1 items-baseline">
+<span class="text-xs font-bold dark:text-white">$12.00</span>
+<span class="text-[10px] text-gray-400 line-through">$21.00</span>
+</div>
+<h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 line-clamp-2 mb-1">Delicious Lay's Potato Chips</h3>
+</div>
+<div class="bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-100 dark:border-gray-700 hover:shadow-md transition">
+<img alt="Snacks" class="h-28 mx-auto object-contain mb-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcrufTvGDWR-tq8kEisYSt1bsVvB5lsJQOJpnjt1MtI9mYTlprykPBYcMb4r611Im6mK4U8rS-1Ko6bOxWbGPBCYyLzVA5bHC6c-ACG5FSHu404ytsVH7dJhRdBV4RHAzLH3N6FUjR_gMIRdf95kG3VFta-ghgiitCVIc8o13IvXMHu3f1I9xP0GWv94UgBywZww13J0G-eU7n29XX8DT7XYqyrs-3PXHvMsKC3Z0BglNisKZQ33sULptpZInZC4t6yIBbDZxJTEuv"/>
+<div class="flex gap-1 mb-1 items-baseline">
+<span class="text-xs font-bold dark:text-white">$22.00</span>
+</div>
+<h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 line-clamp-2 mb-1">SunChips Minis, Garden Salsa</h3>
+</div>
+<div class="bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-100 dark:border-gray-700 hover:shadow-md transition">
+<img alt="Drink" class="h-28 mx-auto object-contain mb-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2ZgENOsGq-iI5vJW53dFzoRYQQA4oQj6mF55Qq8RCmqyEfOEx3_QtPPg6bBbul8iGz9xlYwXnAF7UtXuFmdrMme_E4vIINa6LqTAk7gKNAVS2HbIIwLxT-p-N9o5sbkpGY4SiLpoJfHtVpm0TohS91g81B_7UcBZ-pyVWkjZtCDZPfivATtKPYQc_BWYuNog4dWeXGS_-6PIqXvfwmVbIDEhas40Poh2bjKjX5snvB5FIFUFY_WmjfupLlj20Z-Wo4p6gvPSH5uNt"/>
+<span class="text-[9px] text-white bg-red-500 px-1 rounded inline-block mb-1">-33%</span>
+<div class="flex gap-1 mb-1 items-baseline">
+<span class="text-xs font-bold dark:text-white">$6.00</span>
+<span class="text-[10px] text-gray-400 line-through">$12.00</span>
+</div>
+<h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 line-clamp-2 mb-1">Gatorade G Zero Sugar Thirst</h3>
+</div>
+<div class="bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-100 dark:border-gray-700 hover:shadow-md transition">
+<img alt="Chips" class="h-28 mx-auto object-contain mb-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVGqnYMJxE7nLBQwRzD_oYjHIt8DgArQkIz9NSt1riBU8NZfK3BO0yidipfXjyFtWz_uRqmNjt9At-OjgrM04bUpxqS8hwF-zdUF-8ba6jNY58iY0vzTSw6xQvS7p6OkVn68hyPTElKXlOY1MRoB2cebPzHz3HUE8oJBJHNgk5JAlRaTSRjx-eVYpldHdjVv5_49sqUsiUgblOOLRQpM56mDfogDMtL2s98PzOVJFRhny4-woscXgkkubVd74yXb1qHL0F1ElWEMrU"/>
+<div class="flex gap-1 mb-1 items-baseline">
+<span class="text-xs font-bold dark:text-white">$14.00</span>
+<span class="text-[10px] text-gray-400 line-through">$24.00</span>
+</div>
+<h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 line-clamp-2 mb-1">Green Tostitos Bite Size Rounds</h3>
+</div>
+<div class="bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-100 dark:border-gray-700 hover:shadow-md transition">
+<img alt="Drink" class="h-28 mx-auto object-contain mb-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQGU9MrGKRfxffYO_EguVjtYnGkcEA9euw_05oDHf6LyP5Z6OkkjTN-zawtmuSZDtxBJB6dlQGJpe0cpIszTYZXWnsJHbhoImloQHG0hCih1wvm_fQ5ruiFqUlEJ-PvjbYxy9Z5S3YeSYf30xP_o8q9YqRYxfK2tkoQ-u3S3-fdx0UiEhPalsfHLLvRWA1BLs5vKZw7d9Ovc5N92d0j9SLEKeKCWL0lHMBBM8NLo5wxcKvb8DCtKehbRqIzkZ23luaitH6XeT9NCXk"/>
+<span class="text-[9px] text-white bg-red-500 px-1 rounded inline-block mb-1">-42%</span>
+<div class="flex gap-1 mb-1 items-baseline">
+<span class="text-xs font-bold dark:text-white">$15.00</span>
+<span class="text-[10px] text-gray-400 line-through">$26.00</span>
+</div>
+<h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 line-clamp-2 mb-1">Simply Lemonade with Strawberry</h3>
+</div>
+<div class="bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-100 dark:border-gray-700 hover:shadow-md transition">
+<img alt="Drink" class="h-28 mx-auto object-contain mb-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhEy9jaki9470OP7RWs6ghUUgnyWbpxOV75DIhRmNpHKFUPH0xXResCIRAhqY61QxWwOrMLBUQLuL-RsG61KBvZG33gC0HNz7gE5OiKJMwHOFE0Fp-m7LDOl42DjrSBHG0IaWAJOz9kSRwhiEyUYeq6pty_y81i8U6n-tHA2HZ3GUgG8vWtqSp_2XvLp6GRDzmts0l_6WW4uqOx7Aj80GWcHaoNWa7i9SiE1tGpFf7T5r-KGJELJ8cdXYoY9EgpO9uIU_jv-mDDfWn"/>
+<span class="text-[9px] text-white bg-red-500 px-1 rounded inline-block mb-1">-46%</span>
+<div class="flex gap-1 mb-1 items-baseline">
+<span class="text-xs font-bold dark:text-white">$14.00</span>
+<span class="text-[10px] text-gray-400 line-through">$26.00</span>
+</div>
+<h3 class="text-xs font-medium text-gray-700 dark:text-gray-300 line-clamp-2 mb-1">Mirinda Orange No Artificial Flavors</h3>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+<div>
+<div class="flex items-center justify-between mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
+<h2 class="text-lg font-bold text-gray-900 dark:text-white relative">Protein Drinks<span class="block h-0.5 w-10 bg-primary mt-2 absolute bottom-[-1px]"></span></h2>
+<button class="text-xs border border-gray-300 dark:border-gray-600 rounded px-2 py-1 flex items-center hover:bg-gray-50 dark:hover:bg-gray-700">See More <span class="material-icons text-[14px] ml-1">chevron_right</span></button>
+</div>
+<div class="space-y-4">
+<div class="flex gap-4 p-3 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg hover:shadow-md transition">
+<img alt="Drink" class="w-16 h-20 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAv7sJXEeIJRgr6bfu4UI7BiNWhF870P1PpCQqjrtfxgwOYVqX7w2Tjt04G0pxIF8VnDqTGld3Sy5n0kIRRGoBjXz-UnogMmhkrfZ_fecIymIll1CdDFVifJ_wheNRVqYiv-ANhrvOArnYzTf2v80ZyQhNm_k6rqDTAibFlvjQaQ_vku0X48D4XFbdF_8ecdPEEeP-gXCqR7Me601XQVXiK-lwp5n92fx5xtBFhswVagQA49QkBldJbr0OyhvA0OP3yVuhYU9aYuqlR"/>
+<div>
+<h3 class="text-sm font-medium text-gray-800 dark:text-gray-200 line-clamp-2 mb-1">Simply Light Lemonade, 52 Fl</h3>
+<div class="flex items-center text-yellow-400 text-[10px] mb-1">
+<span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span>
+</div>
+<div class="flex gap-2 text-sm font-bold dark:text-white">$18.00 <span class="text-xs text-gray-400 line-through font-normal">$24.00</span></div>
+</div>
+</div>
+<div class="flex gap-4 p-3 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg hover:shadow-md transition">
+<img alt="Drink" class="w-16 h-20 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-gwJqxtb0qTY8h-2DfZnsgxv3VPBvd-2GOjN7aClbW-xxDUDmK4YnXq69rZBNBd30Mi-B8W4vW-caQfDjGKIxV1WywIRvRXHSOM0_Bhqawd22WI5z5Ax1WFW0IeVHAr_8BnYybM1RS4m2wlT7ZEWsb3Vd4-12u-E7ZTKoSvXYnH_V7BN_NdU751VrHm_BgU2nWqr9XpGeGFlvyh_H-N71jNVjBS58-FwI1d5FBOzgcA1Nz7bqiFI9WbGq72U75sheAtVZSToMFsa5"/>
+<div>
+<h3 class="text-sm font-medium text-gray-800 dark:text-gray-200 line-clamp-2 mb-1">PLEZi Flavored Kids Juice Drink</h3>
+<div class="flex items-center text-yellow-400 text-[10px] mb-1">
+<span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span>
+</div>
+<div class="flex gap-2 text-sm font-bold dark:text-white">$24.00 <span class="text-xs text-gray-400 line-through font-normal">$34.00</span></div>
+</div>
+</div>
+<div class="flex gap-4 p-3 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg hover:shadow-md transition">
+<img alt="Drink" class="w-16 h-20 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlBi33E5JU_JDdYbRWpdyXkUo0IuIMRSC5ZvtwCyWZhD4OqJSc9iWRtflC5mBkJjTVUaSogmgRAb_ZqI7VwUshJZ1zq4EqLMEZymPvyzjAfzcE3Yw0LACSnIJ903hpsx9x9OH3wmFE5fzMbmg89Rzjmq08sBQfcefxgS6dTPaIcIoBoj3xChbifU0Ct-vLaN1Q4-R5ovmC8wFLWxSQum4eM7fgQI7yYxXIZfA_IEarHJzOoRpt90MvaQwr3bLakb3_GN2vUhjROJ_N"/>
+<div>
+<h3 class="text-sm font-medium text-gray-800 dark:text-gray-200 line-clamp-2 mb-1">Nutrition Tropicana Orange Juice</h3>
+<div class="flex items-center text-yellow-400 text-[10px] mb-1">
+<span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span>
+</div>
+<div class="flex gap-2 text-sm font-bold dark:text-white">$10.00 <span class="text-xs text-gray-400 line-through font-normal">$11.00</span></div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
+<h2 class="text-lg font-bold text-gray-900 dark:text-white relative">Fish &amp; Meats<span class="block h-0.5 w-10 bg-primary mt-2 absolute bottom-[-1px]"></span></h2>
+<button class="text-xs border border-gray-300 dark:border-gray-600 rounded px-2 py-1 flex items-center hover:bg-gray-50 dark:hover:bg-gray-700">See More <span class="material-icons text-[14px] ml-1">chevron_right</span></button>
+</div>
+<div class="space-y-4">
+<div class="flex gap-4 p-3 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg hover:shadow-md transition">
+<img alt="Snack" class="w-16 h-20 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACZMnfYkqZ59fXE2CBw2SwFmDMZVrl5AJVn-VZHP6JSiELBWIzZpNePlr1KS8TClFOJ77G4C95L-Zi82kofa_mYsP16oPQWExoD2lf6PB1bCMAmIFUuZE-EPnE3F08PR4s-OD7JB2PR4w4URh0gf8f1Rg3MlAJRsWYssVGDVbHMe94r26IscocaEl6L-O24cV45-kvkn2onMb-q6IJUihXRXowC_iQVdPtpGoZ201kp8XY9_P7lquMKfMu8LjTozZ7RjiN4ln-skQa"/>
+<div>
+<h3 class="text-sm font-medium text-gray-800 dark:text-gray-200 line-clamp-2 mb-1">Delicious Lay's Potato Chips</h3>
+<div class="flex items-center text-yellow-400 text-[10px] mb-1">
+<span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span>
+</div>
+<div class="flex gap-2 text-sm font-bold dark:text-white">$12.00 <span class="text-xs text-gray-400 line-through font-normal">$21.00</span></div>
+</div>
+</div>
+<div class="flex gap-4 p-3 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg hover:shadow-md transition">
+<img alt="Snack" class="w-16 h-20 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmg3xqAQIXQQtCrmUsixXiStHv1VfOYtyOWuPOXoBLLQNF0w0CttK6hRNKVTUP4GFT2SJ5VBJAvCJMHYVPGgh8D4yjoYjSIApRlFPPVbKtJBJdItXp19bvkBvHE8HEnFS17oTsC2Id8JUKYhWtjt8apH4Eyq7ucBYbWnyFFOY8NafLUEpLiXKCxDoOgqP5S0P5k8YspU9Qpjg204Hyvld_su8NRSOIW0ELq3FfXeplG3Yeh9dtlIJVrXu1WxD6Fc7P07RY7bX5Pd8D"/>
+<div>
+<h3 class="text-sm font-medium text-gray-800 dark:text-gray-200 line-clamp-2 mb-1">SunChips Minis, Garden Salsa</h3>
+<div class="flex items-center text-yellow-400 text-[10px] mb-1">
+<span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span>
+</div>
+<div class="flex gap-2 text-sm font-bold dark:text-white">$22.00</div>
+</div>
+</div>
+<div class="flex gap-4 p-3 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg hover:shadow-md transition">
+<img alt="Snack" class="w-16 h-20 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsoyWDe6zfou4crH6TOwdmeEDOzImF1-CDmiXy-HfQ49N_gjYniyicq7YJkNScNWODiKmN4xapdJWgEIdMFixm6NPND2M5_ZlLpKkKXfDRk99d5ZXBLpLvYXDEtQGyvHpT2GJGiWEvQ9NHr-q2k6q1dLG-h_qIIv82g_Y0r48IR4tDPsM9voygT9TKbe8Vdt-koloQPB6C2uu1ybjguCEmtxYtBg4slXJQzo_1KQJBa6zOUQscOE4N3wL_Fl7bTqO6gJbwWUTGge7H"/>
+<div>
+<h3 class="text-sm font-medium text-gray-800 dark:text-gray-200 line-clamp-2 mb-1">Gatorade G Zero Sugar Thirst</h3>
+<div class="flex items-center text-yellow-400 text-[10px] mb-1">
+<span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span>
+</div>
+<div class="flex gap-2 text-sm font-bold dark:text-white">$6.00 <span class="text-xs text-gray-400 line-through font-normal">$12.00</span></div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
+<h2 class="text-lg font-bold text-gray-900 dark:text-white relative">Fresh Fruits<span class="block h-0.5 w-10 bg-primary mt-2 absolute bottom-[-1px]"></span></h2>
+<button class="text-xs border border-gray-300 dark:border-gray-600 rounded px-2 py-1 flex items-center hover:bg-gray-50 dark:hover:bg-gray-700">See More <span class="material-icons text-[14px] ml-1">chevron_right</span></button>
+</div>
+<div class="space-y-4">
+<div class="flex gap-4 p-3 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg hover:shadow-md transition">
+<img alt="Fruit" class="w-16 h-20 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxWLAcFFx61x4uQAvcWpG3ns1PixOTX24YFnDsVeGq-dgw0R0qOIldXv3wr6_o7CFZvvyy94MrKBCc9pJmaGaqOAUJQ8athsuulE3PbflrIdXFsB7IXgCop3pZe8LvKzlzm847kba1Lz3mco77YapKvfk2vz1_TCaf9NIv6ar9WAJRGU9jzPn83sXl41fENbXEZkMY1XHpkPFHM6kzYn-q1pbMEum52o5fpYBlHQbj4wfVI8n1maRdX8MCq0RhwqizRiVDFdrM6Qhu"/>
+<div>
+<h3 class="text-sm font-medium text-gray-800 dark:text-gray-200 line-clamp-2 mb-1">Garden Fresh South African Apple</h3>
+<div class="flex items-center text-yellow-400 text-[10px] mb-1">
+<span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span>
+</div>
+<div class="flex gap-2 text-sm font-bold dark:text-white">$23.00 <span class="text-xs text-gray-400 line-through font-normal">$48.00</span></div>
+</div>
+</div>
+<div class="flex gap-4 p-3 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg hover:shadow-md transition">
+<img alt="Fruit" class="w-16 h-20 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFhWkJ0TGx1443mEKYyCE04HcgRQxDosCSz6ShtUdhiVyKkZXUt38zkvmEZQCw71bSiXl047CuH6ohi-lcsiQvzMSjONmv1_Za0ftBN3UvyC5njJ0a8qF63iiYvnPZ6dwHBqZomsZlue4c-n5Eu0dQegC9Bn48VqS0ze0pqZLstMHFxe0NylT0FofzWjiqPlJhE7iSrhcERgjO7ldQ5NR0-n-W7U9jm8PGVrdHJhmQQuTOgfzb8Hfm35f9J4W9nriMLaKcf8v4r81w"/>
+<div>
+<h3 class="text-sm font-medium text-gray-800 dark:text-gray-200 line-clamp-2 mb-1">Jumbo Medjool Dates 1 LB Family</h3>
+<div class="flex items-center text-yellow-400 text-[10px] mb-1">
+<span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span>
+</div>
+<div class="flex gap-2 text-sm font-bold dark:text-white">$18.00 <span class="text-xs text-gray-400 line-through font-normal">$34.00</span></div>
+</div>
+</div>
+<div class="flex gap-4 p-3 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg hover:shadow-md transition">
+<img alt="Fruit" class="w-16 h-20 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkzh6mNDbQrSK51OC50OMndX-zhn0IL2a7J-ybF2LhoCxBDKNc7chrIXOP2kpyZOs6_WW5LoGrOCrgd-xLXG_Z8g1g9bVimxhYi8TRseiXW1t1oCGRSLqPXVc83Y0Qi08snLvAYMHlTUua1EJ6geTErO_srAKNMcCNwp3X2pgGze_gch3D5K0TuGuf6-wsbdopfm8SC9LiWPyR9EkBPt2Ammgv0G4pQ0Cf51tCxmL-I0fmrMXSHHrX-M8bDA4KH9dvmD9dtLHsUoHD"/>
+<div>
+<h3 class="text-sm font-medium text-gray-800 dark:text-gray-200 line-clamp-2 mb-1">Fresh Strawberries by La Chatelaine</h3>
+<div class="flex items-center text-yellow-400 text-[10px] mb-1">
+<span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span><span class="material-icons text-[12px]">star</span>
+</div>
+<div class="flex gap-2 text-sm font-bold dark:text-white">$56.00 <span class="text-xs text-gray-400 line-through font-normal">$67.00</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<footer class="bg-primary pt-12 pb-6 text-white text-sm">
+<div class="container mx-auto px-4">
+<div class="flex items-center justify-between border-b border-green-600 pb-8 mb-8">
+<div class="flex items-center gap-4">
+<div class="p-3 border-2 border-dashed border-white rounded-full">
+<span class="material-icons text-3xl">headset_mic</span>
+</div>
+<div>
+<h4 class="font-bold text-lg">Support 24/7</h4>
+<p class="text-xs text-green-100 opacity-80">Contact us 24 hours a day</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+<div>
+<div class="flex items-center gap-2 mb-4">
+<div class="bg-white p-1 rounded-lg">
+<span class="material-icons text-primary text-2xl">shopping_basket</span>
+</div>
+<span class="text-2xl font-bold tracking-tight">Zilly</span>
+</div>
+<p class="mb-4 text-green-100 opacity-80 leading-relaxed">
+                        When an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    </p>
+<div class="space-y-2 text-green-100">
+<div class="flex items-start gap-2">
+<span class="material-icons text-sm mt-1">location_on</span>
+<span class="opacity-80">231A Main Road, Newyork City</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-icons text-sm">phone</span>
+<span class="opacity-80">+9888-256-666</span>
+</div>
+</div>
+<div class="flex gap-2 mt-4">
+<a class="w-8 h-8 rounded-full bg-green-700 flex items-center justify-center hover:bg-white hover:text-primary transition" href="#"><i class="material-icons text-sm">facebook</i></a>
+<a class="w-8 h-8 rounded-full bg-green-700 flex items-center justify-center hover:bg-white hover:text-primary transition" href="#"><i class="material-icons text-sm">close</i></a> 
+<a class="w-8 h-8 rounded-full bg-green-700 flex items-center justify-center hover:bg-white hover:text-primary transition" href="#"><i class="material-icons text-sm">camera_alt</i></a> 
+</div>
+</div>
+<div>
+<h3 class="font-bold text-lg mb-4">Quick Links</h3>
+<ul class="space-y-2 text-green-100 opacity-80">
+<li><a class="hover:text-white hover:underline" href="#">Smartphones</a></li>
+<li><a class="hover:text-white hover:underline" href="#">Headphones</a></li>
+<li><a class="hover:text-white hover:underline" href="#">Laptop &amp; Tablet</a></li>
+<li><a class="hover:text-white hover:underline" href="#">Monitors</a></li>
+<li><a class="hover:text-white hover:underline" href="#">Printers</a></li>
+<li><a class="hover:text-white hover:underline" href="#">Gadgets</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-lg mb-4">Accounts</h3>
+<ul class="space-y-2 text-green-100 opacity-80">
+<li><a class="hover:text-white hover:underline" href="#">My Orders</a></li>
+<li><a class="hover:text-white hover:underline" href="#">Cart</a></li>
+<li><a class="hover:text-white hover:underline" href="#">Checkout</a></li>
+<li><a class="hover:text-white hover:underline" href="#">Compare</a></li>
+<li><a class="hover:text-white hover:underline" href="#">My account</a></li>
+<li><a class="hover:text-white hover:underline" href="#">Wishlist</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-lg mb-4">Sign Up Newsletter</h3>
+<p class="mb-4 text-green-100 opacity-80 text-xs">When an unknown printer took a galley of type and scrambled.</p>
+<div class="flex mb-6">
+<input class="w-full px-3 py-2 text-gray-700 rounded-l-md border-none focus:ring-0 text-sm" placeholder="Type Your E-mail" type="email"/>
+<button class="bg-accent hover:bg-yellow-400 text-gray-900 font-bold px-4 py-2 rounded-r-md text-sm transition">Subscribe</button>
+</div>
+<h4 class="font-bold mb-2">Download App on Mobile:</h4>
+<p class="text-xs text-green-100 opacity-80 mb-3">15% discount on your first purchase</p>
+<div class="flex flex-col gap-2">
+<button class="bg-gray-900 hover:bg-gray-800 text-white py-1.5 px-3 rounded flex items-center gap-2 w-36">
+<span class="material-icons text-xl">android</span>
+<div class="text-left leading-none">
+<span class="text-[8px] block uppercase">Get it on</span>
+<span class="text-sm font-bold">Google Play</span>
+</div>
+</button>
+<button class="bg-gray-900 hover:bg-gray-800 text-white py-1.5 px-3 rounded flex items-center gap-2 w-36">
+<span class="material-icons text-xl">apple</span>
+<div class="text-left leading-none">
+<span class="text-[8px] block uppercase">Download on</span>
+<span class="text-sm font-bold">App Store</span>
+</div>
+</button>
+</div>
+</div>
+</div>
+<div class="pt-6 border-t border-green-600 flex flex-col md:flex-row items-center justify-between gap-4">
+<p class="text-xs text-green-100 opacity-70">© 2025 Zilly. All Rights Reserved by RadiusTheme</p>
+<div class="flex gap-2 opacity-80">
+<span class="bg-white rounded px-1 py-0.5"><img alt="Visa" class="h-4 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBizlN6Ej-Jq5uL6C489rSMRLCVinLynftpUVmIX82IS68QGQg4DDhyBpsAiC_M1jz7AL7om8QwKVPZd7_lEeTi0QQfks_AthDOq0_dDlY5uxGd-4MJoQuL1qaF2ezLk35XB9cFNHgsGIm6jY7XV5PIe56CRVGHlFSAPPL1GhRU15Iivbv2d0KuqtrHmMx5LcuP2sJ7Swm6BUn1S4vtFzFk24uJpRU7kqKOb8MJeRpqWlDuHB86iruW8c0GtgyfUig6v3WUTQ-XIgTY"/></span>
+<span class="bg-white rounded px-1 py-0.5"><img alt="Mastercard" class="h-4 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJHtZLKOMJMXKjNQKjdN366VwkAuO9Usg8_AbEuKepQ88-1bpwK6-8RaMvrxw4WuOiZikUJz1XWy-KljnecaoU_7O571GXidLS6TPTNbycgPRABd0FyyByDgwaC5DBilp7ybpfXff_FgBFexFjHXFYi9lzpXJqDrh0Cz2YEPIMdJqkLPoXyUn9RIQh5IWCz8_2ve7yQ-s5DraywAAJMRc16oYakZjzczGlrUs5WhGoO6XwLxp4O4wotxTNkK-Mlbp_YhbBG-CpunPu"/></span>
+<span class="bg-white rounded px-1 py-0.5"><img alt="Paypal" class="h-4 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3cKHmnZiCTj2Pl8uqwp_hTX2FoFq3G4eF4S4iDQsdSmL0tqVvD3Wh-irNkyVU_jjRNAFwMgUTqwYe6IsbrA6iut9fO2Z56xUApP68E_Lm8TNmq4sfEJsVBg00TrkrL5MfGjNx2KLejqYUZ44yKYGAPuWBSikN5cDTFEYfbymgKhqbDGJ-o5SXV8cdlS177EQTbEfe5mHTND43ew6aBdnABCic2uy2uLH3OFw3PE6cAf6Svl70gULxcc58mre_MMKYNU1bpRF1UYAX"/></span>
+</div>
+</div>
+</div>
+</footer>
+<div class="fixed bottom-4 left-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-3 flex items-center gap-3 w-80 z-40 border border-gray-100 dark:border-gray-700 animate-bounce" style="animation-duration: 3s;">
+<img alt="Product" class="w-12 h-12 object-cover rounded" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6_RE_tWDoeixK7KCGh1zkFm8dKPn6nbfa-FfzE5VgTl-VqjXgjq43-EQ2FtM748rySxna39CZtmGSadl9u4O_NmlLVJb_Rc0iwoOJvmtqBJy_paCVMHt4r2DA6ftIXEFXGf8CIXPdwZJ08LwuH4pfgA1ecrnEpkdxvH_LeT72bf3y4COrJDVNiff4s2F7FZn78p9O9sk_EhjlOsirpHUP6xPrhzD3kL1Z6QEE6Xkq5QQ0KwbanxiVbaIkQOUmiiR3oanDl-WegakY"/>
+<div class="flex-1">
+<p class="text-[10px] text-gray-400 mb-0.5">Someone purchased</p>
+<h4 class="text-xs font-bold text-gray-800 dark:text-gray-200 line-clamp-1">Maxican Nature's Sweet Bounty</h4>
+<p class="text-[10px] text-gray-400 mt-0.5">About 15 minutes ago</p>
+</div>
+<button class="text-gray-400 hover:text-gray-600"><span class="material-icons text-sm">close</span></button>
+</div>
+<a class="fixed bottom-8 right-8 bg-blue-500 hover:bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition z-40" href="#">
+<span class="material-icons">arrow_upward</span>
+</a>
 
-    <!-- Bootstrap -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <!-- Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Lato:400,900&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Material ui icons - google web fonts -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css" />
-    <title>oryzn.co</title>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-10 main-title">
-            <h1></h1>
-          <h1>We are launching soon our clothing brand</h1>
-
-        </div>
-      </div>
-      <div class="row align-items-center">
-        <div class="col-sm-10 col-md-6 col-lg-6 svg-img p-5">
-          <svg
-            viewBox="0 0 834 690"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g id="undraw_dev_productivity_umsq 1" clip-path="url(#clip0)">
-              <g id="man">
-                <path
-                  id="Vector"
-                  d="M435.922 191.941C476.534 191.941 509.458 159.018 509.458 118.405C509.458 77.7923 476.534 44.869 435.922 44.869C395.309 44.869 362.385 77.7923 362.385 118.405C362.385 159.018 395.309 191.941 435.922 191.941Z"
-                  fill="#A0616A"
-                />
-                <path
-                  id="Vector_2"
-                  d="M381.036 155.173C381.036 155.173 394.891 259.616 373.576 271.339C352.261 283.062 500.399 284.128 500.399 284.128C500.399 284.128 467.361 193.54 482.281 165.831L381.036 155.173Z"
-                  fill="#A0616A"
-                />
-                <path
-                  id="Vector_3"
-                  d="M608.57 284.656L596.25 340.756L570.2 459.446L569.42 465.946L560.43 541.196L554.45 591.186L550.44 624.766C526.06 637.296 508.39 645.946 508.39 645.946C508.39 645.946 506.87 638.326 504.42 628.576C487.31 633.706 455.65 642.216 428.82 643.916C438.59 654.806 443.08 665.036 436.99 672.586C418.61 695.346 342.73 647.666 316.19 629.886C315.572 634.143 315.338 638.447 315.49 642.746L295.18 627.126L297.19 591.186L300.58 530.376L304.84 454.116C303.497 450.851 302.371 447.5 301.47 444.086C295.25 421.966 287.7 377.796 281.91 340.756C277.25 310.946 273.75 285.756 273.01 280.396C272.91 279.696 272.86 279.336 272.86 279.336L385.29 229.656C393.28 248.186 430.59 253.756 430.59 253.756C461.5 251.626 485.73 235.326 485.73 235.326L608.57 284.656Z"
-                  fill="#D0CDE1"
-                />
-                <path
-                  id="Vector_4"
-                  d="M374.746 48.8468L360.997 43.3423C360.997 43.3423 389.746 11.6915 429.744 14.4439L418.494 2.05865C418.494 2.05865 445.993 -8.95021 470.992 19.9482C484.134 35.1394 499.339 52.996 508.817 73.1112H523.542L517.396 86.643L538.906 100.175L516.828 97.7442C518.144 105.154 518.346 112.719 517.428 120.189C516.48 127.661 512.667 134.473 506.793 139.187C506.793 139.187 489.741 103.891 489.741 98.387V112.148C489.741 112.148 475.992 99.7631 475.992 91.5065L468.492 101.139L464.742 86.0019L418.494 101.139L425.994 88.7543L397.245 92.8826L408.495 77.7452C408.495 77.7452 375.997 95.6348 374.746 110.772C373.497 125.909 363.984 140.253 363.984 140.253C363.984 140.253 338.498 69.4885 374.746 48.8468Z"
-                  fill="#2F2E41"
-                />
-                <g id="rightHand">
-                  <path
-                    id="Vector_5"
-                    d="M516.92 624.636C516.92 624.636 512.16 626.266 504.42 628.576C487.31 633.706 455.65 642.216 428.82 643.916C405.72 645.396 386.2 641.836 382.63 626.766C381.1 620.286 383.27 614.956 388 610.576C402.12 597.486 439 592.796 468.25 591.186C476.51 590.736 484.15 590.526 490.51 590.446C501.31 590.306 508.39 590.526 508.39 590.526L508.56 591.186L516.92 624.636Z"
-                    fill="#A0616A"
-                  />
-                  <path
-                    id="Vector_6"
-                    d="M688.5 542.566C681.01 550.686 662.45 562.916 639.95 576.156C631.58 581.076 622.67 586.146 613.58 591.186C591.89 603.216 569.18 615.136 550.44 624.766C526.06 637.296 508.39 645.946 508.39 645.946C508.39 645.946 506.87 638.326 504.42 628.576C501.14 615.526 496.2 598.656 491.05 591.186C490.87 590.926 490.69 590.686 490.51 590.446C489.01 588.476 487.5 587.326 486.01 587.326L560.43 541.196L592.59 521.256L569.42 465.946L540.36 396.566L557.9 340.756L575.53 284.656H608.57C608.57 284.656 619.51 308.536 633.5 341.836C635.59 346.816 637.75 352.006 639.95 357.366C668.73 427.366 704.61 525.116 688.5 542.566Z"
-                    fill="#D0CDE1"
-                  />
-                </g>
-                <g id="leftHand">
-                  <path
-                    id="Vector_7"
-                    d="M436.99 672.586C418.61 695.346 342.73 647.666 316.19 629.886C310.41 626.016 306.97 623.566 306.97 623.566L331.25 591.186L338.94 580.936C338.94 580.936 345.82 584.586 355.99 590.526C356.36 590.746 356.73 590.966 357.11 591.186C365.88 596.336 376.89 603.066 388 610.576C403.33 620.946 418.83 632.776 428.82 643.916C438.59 654.806 443.08 665.036 436.99 672.586Z"
-                    fill="#A0616A"
-                  />
-                  <path
-                    id="Vector_8"
-                    d="M355.99 590.526C353.276 590.516 350.567 590.736 347.89 591.186C324.9 595.136 318.12 615.946 316.19 629.886C315.572 634.143 315.338 638.447 315.49 642.746L295.18 627.126L287.78 621.436C269.97 615.226 254.1 604.196 240.34 591.186C228.403 579.7 217.695 567.001 208.39 553.296C199.122 539.788 190.86 525.616 183.67 510.896C181.664 506.788 180.586 502.29 180.512 497.719C180.437 493.148 181.369 488.617 183.24 484.446L208.39 428.396L245.15 346.476C245.42 344.526 245.717 342.619 246.04 340.756C253.33 298.956 272.86 280.396 272.86 280.396H287.78L297.76 340.756L310.16 415.746L301.47 444.086L281.39 509.536L300.58 530.376L355.99 590.526Z"
-                    fill="#D0CDE1"
-                  />
-                </g>
-                <path
-                  id="Vector_9"
-                  d="M372.877 415.806L385.631 430.687C390.37 429.783 395.319 428.721 400.416 427.529L396.752 415.806L405.71 426.256C459.707 412.976 526.637 387.155 526.637 387.155C526.637 387.155 454.38 392.453 400.428 380.666C376.558 375.451 351.998 387.284 342.202 409.669C336.509 422.679 337.403 433.952 357.596 433.952C364.419 433.835 371.224 433.195 377.949 432.037L372.877 415.806Z"
-                  fill="#6C63FF"
-                />
-              </g>
-              <g id="allOther">
-                <path
-                  id="Vector_10"
-                  d="M663.65 660.386V666.456C663.654 668.122 663.345 669.774 662.74 671.326C662.472 672.018 662.147 672.687 661.77 673.326C660.579 675.327 658.887 676.983 656.863 678.133C654.838 679.283 652.549 679.887 650.22 679.886H203.67C201.342 679.887 199.053 679.283 197.028 678.133C195.003 676.983 193.312 675.327 192.12 673.326C191.743 672.687 191.419 672.018 191.15 671.326C190.546 669.774 190.237 668.122 190.24 666.456V660.386C190.24 658.622 190.587 656.876 191.262 655.246C191.936 653.616 192.926 652.136 194.173 650.889C195.42 649.641 196.901 648.652 198.53 647.977C200.16 647.303 201.907 646.956 203.67 646.956H229.41V644.126C229.41 644.053 229.425 643.98 229.453 643.912C229.481 643.844 229.522 643.782 229.574 643.73C229.626 643.678 229.688 643.637 229.756 643.608C229.824 643.58 229.897 643.566 229.97 643.566H243.4C243.474 643.566 243.547 643.58 243.615 643.608C243.683 643.637 243.745 643.678 243.797 643.73C243.849 643.782 243.89 643.844 243.918 643.912C243.946 643.98 243.96 644.053 243.96 644.126V646.956H252.35V644.126C252.35 644.053 252.365 643.98 252.393 643.912C252.421 643.844 252.462 643.782 252.514 643.73C252.566 643.678 252.628 643.637 252.696 643.608C252.764 643.58 252.837 643.566 252.91 643.566H266.34C266.414 643.566 266.487 643.58 266.555 643.608C266.623 643.637 266.684 643.678 266.736 643.73C266.789 643.782 266.83 643.844 266.858 643.912C266.886 643.98 266.9 644.053 266.9 644.126V646.956H275.3V644.126C275.3 644.053 275.315 643.98 275.343 643.912C275.371 643.844 275.412 643.782 275.464 643.73C275.516 643.678 275.578 643.637 275.646 643.608C275.714 643.58 275.787 643.566 275.86 643.566H289.29C289.364 643.566 289.437 643.58 289.505 643.608C289.573 643.637 289.634 643.678 289.687 643.73C289.739 643.782 289.78 643.844 289.808 643.912C289.836 643.98 289.85 644.053 289.85 644.126V646.956H298.24V644.126C298.24 644.053 298.255 643.98 298.283 643.912C298.311 643.844 298.352 643.782 298.404 643.73C298.456 643.678 298.518 643.637 298.586 643.608C298.654 643.58 298.727 643.566 298.8 643.566H312.23C312.304 643.566 312.377 643.58 312.445 643.608C312.513 643.637 312.574 643.678 312.626 643.73C312.679 643.782 312.72 643.844 312.748 643.912C312.776 643.98 312.79 644.053 312.79 644.126V646.956H321.18V644.126C321.18 644.053 321.195 643.98 321.223 643.912C321.251 643.844 321.292 643.782 321.344 643.73C321.396 643.678 321.458 643.637 321.526 643.608C321.594 643.58 321.667 643.566 321.74 643.566H335.17C335.244 643.566 335.317 643.58 335.385 643.608C335.453 643.637 335.514 643.678 335.566 643.73C335.619 643.782 335.66 643.844 335.688 643.912C335.716 643.98 335.73 644.053 335.73 644.126V646.956H344.13V644.126C344.13 644.053 344.145 643.98 344.173 643.912C344.201 643.844 344.242 643.782 344.294 643.73C344.346 643.678 344.408 643.637 344.476 643.608C344.544 643.58 344.617 643.566 344.69 643.566H358.12C358.194 643.566 358.267 643.58 358.335 643.608C358.403 643.637 358.464 643.678 358.516 643.73C358.569 643.782 358.61 643.844 358.638 643.912C358.666 643.98 358.68 644.053 358.68 644.126V646.956H367.07V644.126C367.07 644.053 367.085 643.98 367.113 643.912C367.141 643.844 367.182 643.782 367.234 643.73C367.286 643.678 367.348 643.637 367.416 643.608C367.484 643.58 367.557 643.566 367.63 643.566H472.83C472.904 643.566 472.977 643.58 473.045 643.608C473.113 643.637 473.174 643.678 473.227 643.73C473.279 643.782 473.32 643.844 473.348 643.912C473.376 643.98 473.39 644.053 473.39 644.126V646.956H481.79V644.126C481.79 644.053 481.805 643.98 481.833 643.912C481.861 643.844 481.902 643.782 481.954 643.73C482.006 643.678 482.068 643.637 482.136 643.608C482.204 643.58 482.277 643.566 482.35 643.566H495.78C495.928 643.568 496.07 643.627 496.175 643.732C496.279 643.836 496.339 643.978 496.34 644.126V646.956H504.73V644.126C504.73 644.053 504.745 643.98 504.773 643.912C504.801 643.844 504.842 643.782 504.894 643.73C504.946 643.678 505.008 643.637 505.076 643.608C505.144 643.58 505.217 643.566 505.29 643.566H518.72C518.794 643.566 518.867 643.58 518.935 643.608C519.003 643.637 519.065 643.678 519.117 643.73C519.169 643.782 519.21 643.844 519.238 643.912C519.266 643.98 519.28 644.053 519.28 644.126V646.956H527.67V644.126C527.67 644.053 527.685 643.98 527.713 643.912C527.741 643.844 527.782 643.782 527.834 643.73C527.886 643.678 527.948 643.637 528.016 643.608C528.084 643.58 528.157 643.566 528.23 643.566H541.66C541.734 643.566 541.807 643.58 541.875 643.608C541.943 643.637 542.005 643.678 542.057 643.73C542.109 643.782 542.15 643.844 542.178 643.912C542.206 643.98 542.22 644.053 542.22 644.126V646.956H550.62V644.126C550.62 644.053 550.635 643.98 550.663 643.912C550.691 643.844 550.732 643.782 550.784 643.73C550.836 643.678 550.898 643.637 550.966 643.608C551.034 643.58 551.107 643.566 551.18 643.566H564.61C564.757 643.568 564.898 643.628 565.001 643.733C565.104 643.838 565.161 643.979 565.16 644.126V646.956H573.56V644.126C573.56 644.053 573.575 643.98 573.603 643.912C573.631 643.844 573.672 643.782 573.724 643.73C573.776 643.678 573.838 643.637 573.906 643.608C573.974 643.58 574.047 643.566 574.12 643.566H587.55C587.624 643.566 587.697 643.58 587.765 643.608C587.833 643.637 587.895 643.678 587.947 643.73C587.999 643.782 588.04 643.844 588.068 643.912C588.096 643.98 588.111 644.053 588.11 644.126V646.956H596.5V644.126C596.5 644.053 596.515 643.98 596.543 643.912C596.571 643.844 596.612 643.782 596.664 643.73C596.716 643.678 596.778 643.637 596.846 643.608C596.914 643.58 596.987 643.566 597.06 643.566H610.49C610.564 643.566 610.637 643.58 610.705 643.608C610.773 643.637 610.835 643.678 610.887 643.73C610.939 643.782 610.98 643.844 611.008 643.912C611.036 643.98 611.051 644.053 611.05 644.126V646.956H650.22C651.984 646.956 653.731 647.303 655.36 647.977C656.99 648.652 658.471 649.641 659.718 650.889C660.965 652.136 661.954 653.616 662.629 655.246C663.304 656.876 663.651 658.622 663.65 660.386Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_11"
-                  d="M833.5 671.326H60.5002V673.326H833.5V671.326Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_12"
-                  d="M627.695 404.757H461.252V401.326H385.78V404.757H218.651C215.665 404.757 212.801 405.943 210.69 408.054C208.579 410.166 207.392 413.029 207.392 416.015V643.927C207.392 646.913 208.578 649.776 210.69 651.888C212.801 653.999 215.665 655.185 218.651 655.185H627.695C630.68 655.185 633.544 653.999 635.656 651.888C637.767 649.776 638.953 646.913 638.953 643.927V416.015C638.953 414.537 638.662 413.073 638.096 411.707C637.53 410.341 636.701 409.1 635.656 408.054C634.61 407.009 633.369 406.179 632.003 405.614C630.637 405.048 629.173 404.757 627.695 404.757Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_13"
-                  d="M108.446 661.223H80.446V689.223H108.446V661.223Z"
-                  fill="#D0CDE1"
-                />
-                <path
-                  id="Vector_14"
-                  d="M91.45 639.223V673.223H125.45V639.223H91.45ZM123.97 671.743H92.92V640.703H123.97V671.743Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_15"
-                  d="M756.446 661.223H728.446V689.223H756.446V661.223Z"
-                  fill="#D0CDE1"
-                />
-                <path
-                  id="Vector_16"
-                  d="M739.45 639.223V673.223H773.45V639.223H739.45ZM771.97 671.743H740.92V640.703H771.97V671.743Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_17"
-                  d="M94.5801 230.113C138.399 230.113 173.921 194.591 173.921 150.773C173.921 106.954 138.399 71.4324 94.5801 71.4324C50.7616 71.4324 15.2396 106.954 15.2396 150.773C15.2396 194.591 50.7616 230.113 94.5801 230.113Z"
-                  fill="#6C63FF"
-                />
-                <path
-                  id="Vector_18"
-                  d="M122.229 56.49C115.045 55.5764 107.775 55.5764 100.591 56.49C84.5863 58.5914 69.5206 65.2399 57.1812 75.6466C44.8419 86.0533 35.747 99.7814 30.9756 115.202C28.8056 122.229 27.5767 129.514 27.3211 136.864C27.2851 137.886 27.261 138.92 27.261 139.954C27.2833 162.265 36.1561 183.655 51.9323 199.431C67.7084 215.208 89.0991 224.08 111.41 224.103C113.201 224.103 114.992 224.043 116.759 223.934C120.908 223.674 125.03 223.103 129.093 222.227C148.495 218.055 165.798 207.161 177.947 191.468C190.096 175.776 196.308 156.295 195.487 136.467C194.666 116.638 186.864 97.7381 173.459 83.104C160.054 68.4699 141.909 59.0436 122.229 56.49H122.229ZM137.748 217.347H137.736C130.959 219.659 123.905 221.062 116.759 221.518C114.992 221.638 113.201 221.698 111.41 221.698C89.7379 221.672 68.9613 213.051 53.6369 197.727C38.3126 182.402 29.6917 161.626 29.6652 139.954C29.6652 138.92 29.6892 137.886 29.7253 136.864C30.5517 115.744 39.5159 95.7617 54.7414 81.1009C69.9669 66.4401 90.2733 58.2371 111.41 58.209C130.776 58.2101 149.513 65.0866 164.283 77.6132C179.052 90.1399 188.895 107.503 192.057 126.61C195.22 145.716 191.496 165.325 181.55 181.942C171.604 198.559 156.082 211.106 137.748 217.347H137.748Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_19"
-                  d="M112.612 63.0175H110.208V79.8473H112.612V63.0175Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_20"
-                  d="M57.8578 84.7016L56.1577 86.4017L68.0582 98.3021L69.7582 96.6021L57.8578 84.7016Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_21"
-                  d="M34.4738 138.752V141.156H51.3035V138.752H34.4738Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_22"
-                  d="M56.1577 193.506L57.8578 195.206L69.7582 183.305L68.0582 181.605L56.1577 193.506Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_23"
-                  d="M153.061 96.602L154.762 98.3021L166.662 86.4016L164.962 84.7016L153.061 96.602Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_24"
-                  d="M171.516 138.752V141.156H188.346V138.752H171.516Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_25"
-                  d="M154.762 181.605L153.061 183.305L164.962 195.206L166.662 193.506L154.762 181.605Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_26"
-                  d="M112.612 200.06H110.208V216.89H112.612V200.06Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_27"
-                  d="M122.229 35.3686H100.591V57.0069H122.229V35.3686Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_28"
-                  d="M111.41 38.975C127.344 38.975 140.261 34.4002 140.261 28.7569C140.261 23.1136 127.344 18.5388 111.41 18.5388C95.4759 18.5388 82.5588 23.1136 82.5588 28.7569C82.5588 34.4002 95.4759 38.975 111.41 38.975Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_29"
-                  d="M226 220.44H0V222.844H226V220.44Z"
-                  fill="#3F3D56"
-                />
-              </g>
-              <g id="clock">
-                <path
-                  id="Vector_30"
-                  d="M115.016 94.2729H107.803V135.145H115.016V94.2729Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_31"
-                  d="M115.016 135.145C113.976 134.365 112.71 133.943 111.41 133.943C110.109 133.943 108.844 134.365 107.803 135.145C107.091 135.686 106.505 136.375 106.084 137.165C105.552 138.181 105.322 139.329 105.421 140.473C105.52 141.616 105.944 142.707 106.643 143.617C107.343 144.527 108.288 145.218 109.368 145.608C110.447 145.998 111.616 146.07 112.735 145.817C113.855 145.564 114.878 144.996 115.685 144.179C116.492 143.363 117.048 142.333 117.288 141.211C117.528 140.088 117.441 138.921 117.039 137.846C116.636 136.771 115.934 135.834 115.016 135.145H115.016ZM111.41 143.56C110.454 143.557 109.539 143.176 108.863 142.501C108.187 141.825 107.806 140.909 107.803 139.954C107.808 139.224 108.03 138.513 108.441 137.91C108.793 137.4 109.271 136.989 109.828 136.718C110.385 136.447 111.003 136.324 111.622 136.361C112.241 136.398 112.84 136.595 113.361 136.931C113.881 137.267 114.306 137.732 114.595 138.281C114.883 138.83 115.025 139.444 115.007 140.063C114.988 140.683 114.811 141.288 114.49 141.818C114.17 142.349 113.718 142.788 113.179 143.093C112.639 143.399 112.03 143.559 111.41 143.56V143.56Z"
-                  fill="#3F3D56"
-                />
-              </g>
-              <g id="leftTree">
-                <path
-                  id="Vector_32"
-                  d="M150.594 599.754C151.527 631.704 132.859 643.413 109.43 644.097C108.886 644.113 108.345 644.123 107.805 644.126C106.719 644.135 105.643 644.117 104.577 644.072C83.3891 643.193 66.6173 631.945 65.7495 602.232C64.8515 571.482 103.018 531.529 105.882 528.574L105.887 528.571C105.996 528.458 106.052 528.402 106.052 528.402C106.052 528.402 149.661 567.807 150.594 599.754Z"
-                  fill="#D0CDE1"
-                />
-                <path
-                  id="Vector_33"
-                  d="M107.744 639.255L122.626 617.124L107.774 641.636L107.805 644.126C106.719 644.135 105.643 644.117 104.577 644.072L105.316 612.06L105.295 611.813L105.323 611.766L105.393 608.741L89.0953 585.078L105.374 606.477L105.432 607.116L105.989 582.93L91.9123 558.397L106.029 578.681L105.882 528.574L105.882 528.407L105.887 528.571L106.822 568.062L119.651 552.021L106.864 571.464L107.144 593.098L118.949 571.984L107.187 596.279L107.343 608.309L124.512 578.897L107.395 612.505L107.744 639.255Z"
-                  fill="#3F3D56"
-                />
-              </g>
-              <g id="righTree">
-                <path
-                  id="Vector_34"
-                  d="M798.594 599.754C799.527 631.704 780.859 643.413 757.43 644.097C756.886 644.113 756.345 644.123 755.805 644.126C754.719 644.135 753.643 644.117 752.577 644.072C731.389 643.193 714.617 631.945 713.75 602.232C712.852 571.482 751.018 531.529 753.882 528.574L753.887 528.571C753.996 528.458 754.052 528.402 754.052 528.402C754.052 528.402 797.661 567.807 798.594 599.754Z"
-                  fill="#D0CDE1"
-                />
-                <path
-                  id="Vector_35"
-                  d="M755.744 639.255L770.626 617.124L755.774 641.636L755.805 644.126C754.719 644.135 753.643 644.117 752.577 644.072L753.316 612.06L753.295 611.813L753.323 611.766L753.393 608.741L737.095 585.078L753.374 606.477L753.432 607.116L753.989 582.93L739.912 558.397L754.029 578.681L753.882 528.574L753.882 528.407L753.887 528.571L754.822 568.062L767.651 552.021L754.864 571.464L755.144 593.098L766.949 571.984L755.187 596.279L755.343 608.309L772.512 578.897L755.395 612.505L755.744 639.255Z"
-                  fill="#3F3D56"
-                />
-              </g>
-              <g id="pc-circle">
-                <path
-                  id="Vector_36"
-                  d="M422.5 512.326C436.307 512.326 447.5 501.133 447.5 487.326C447.5 473.519 436.307 462.326 422.5 462.326C408.693 462.326 397.5 473.519 397.5 487.326C397.5 501.133 408.693 512.326 422.5 512.326Z"
-                  fill="#3F3D56"
-                />
-              </g>
-            </g>
-            <defs>
-              <clipPath id="clip0">
-                <rect width="833.5" height="689.223" fill="white" />
-              </clipPath>
-            </defs>
-          </svg>
-        </div>
-      </div>
-     
-    </div>
-      <footer class="footer">
-        <div class="container text-center">
-          <span>oryzn.co</span>
-        </div>
-      </footer>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-      crossorigin="anonymous"
-    ></script>
-  </body>
-</html>
+</body></html>
