@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Zilly - Guava Organic Fruits</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#15803d", // Green branding color
+                        secondary: "#fca5a5", // Light red accent if needed
+                        accent: "#facc15", // Yellow accent
+                        "background-light": "#ffffff",
+                        "background-dark": "#111827",
+                        "surface-light": "#f3f4f6",
+                        "surface-dark": "#1f2937",
+                        "border-light": "#e5e7eb",
+                        "border-dark": "#374151",
+                        "text-light": "#374151",
+                        "text-dark": "#d1d5db",
+                    },
+                    fontFamily: {
+                        display: ["Quicksand", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark font-display transition-colors duration-200">
+<div class="bg-primary text-white py-2 text-sm px-4 md:px-8 flex justify-between items-center">
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1"><i class="fas fa-map-marker-alt"></i> 23/A Mark Street Road, Newyork City</span>
+<span class="hidden md:flex items-center gap-1 border-l border-white/30 pl-4"><i class="fas fa-envelope"></i> info@zillystore.com</span>
+</div>
+<div class="flex items-center gap-3">
+<i class="fab fa-facebook-f hover:text-accent cursor-pointer"></i>
+<i class="fab fa-instagram hover:text-accent cursor-pointer"></i>
+<i class="fab fa-pinterest-p hover:text-accent cursor-pointer"></i>
+<i class="fab fa-twitter hover:text-accent cursor-pointer"></i>
+</div>
+</div>
+<header class="bg-white dark:bg-surface-dark shadow-sm sticky top-0 z-50">
+<div class="container mx-auto px-4 py-4 md:py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+<a class="flex items-center gap-2 text-2xl font-bold text-gray-800 dark:text-white" href="#">
+<div class="bg-primary p-1 rounded-lg text-white">
+<i class="fas fa-shopping-basket text-xl"></i>
+</div>
+                Zilly
+            </a>
+<div class="flex flex-1 w-full md:w-auto max-w-3xl items-center gap-2">
+<div class="relative w-full flex bg-surface-light dark:bg-gray-800 rounded-full border border-border-light dark:border-border-dark overflow-hidden">
+<button class="px-4 py-2 text-gray-600 dark:text-gray-300 border-r border-border-light dark:border-border-dark font-medium hidden sm:flex items-center gap-2 whitespace-nowrap">
+<i class="fas fa-bars"></i> All Categories <i class="fas fa-chevron-down text-xs ml-1"></i>
+</button>
+<input class="w-full bg-transparent border-none focus:ring-0 px-4 py-3 text-sm text-gray-700 dark:text-gray-200 placeholder-gray-400" placeholder="Type Your Products ..." type="text"/>
+<button class="bg-accent hover:bg-yellow-400 text-gray-900 px-6 font-bold transition-colors">
+                        Search <i class="fas fa-search ml-1"></i>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-4 md:gap-6 text-gray-600 dark:text-gray-300">
+<button class="hover:text-primary transition-colors"><i class="far fa-user text-xl"></i></button>
+<div class="relative group cursor-pointer hover:text-primary transition-colors">
+<i class="fas fa-sync-alt text-xl"></i>
+<span class="absolute -top-2 -right-2 bg-accent text-gray-900 text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center">0</span>
+</div>
+<div class="relative group cursor-pointer hover:text-primary transition-colors">
+<i class="far fa-heart text-xl"></i>
+<span class="absolute -top-2 -right-2 bg-accent text-gray-900 text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center">0</span>
+</div>
+<div class="relative group cursor-pointer hover:text-primary transition-colors">
+<i class="fas fa-shopping-basket text-xl"></i>
+<span class="absolute -top-2 -right-2 bg-accent text-gray-900 text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center">0</span>
+</div>
+<button class="md:hidden text-gray-600 dark:text-gray-300"><i class="fas fa-bars text-2xl"></i></button>
+</div>
+</div>
+<nav class="border-t border-border-light dark:border-border-dark py-3 hidden md:block">
+<div class="container mx-auto px-4 flex items-center gap-8 text-sm font-semibold text-gray-600 dark:text-gray-300">
+<a class="text-primary hover:text-primary flex items-center gap-1" href="#">Home <i class="fas fa-chevron-down text-xs"></i></a>
+<a class="hover:text-primary flex items-center gap-1 transition-colors" href="#">Pages <i class="fas fa-chevron-down text-xs"></i></a>
+<a class="hover:text-primary flex items-center gap-1 transition-colors" href="#">Shop <i class="fas fa-chevron-down text-xs"></i></a>
+<a class="hover:text-primary flex items-center gap-1 transition-colors" href="#">Vendor <i class="fas fa-chevron-down text-xs"></i></a>
+<a class="hover:text-primary flex items-center gap-1 transition-colors" href="#">Elements <i class="fas fa-chevron-down text-xs"></i></a>
+<a class="hover:text-primary flex items-center gap-1 transition-colors" href="#">Blog <i class="fas fa-chevron-down text-xs"></i></a>
+<a class="hover:text-primary transition-colors" href="#">Contact</a>
+<a class="ml-auto flex items-center gap-2 text-green-600 font-bold hover:text-green-700" href="#">
+<i class="fas fa-percent"></i> Weekly Discount!
+                </a>
+<div class="bg-red-600 text-white px-4 py-2 rounded-full font-bold flex items-center gap-2 text-xs">
+<i class="fas fa-phone-alt"></i> Hotline Number: +9888-256-666
+                </div>
+</div>
+</nav>
+</header>
+<div class="bg-surface-light dark:bg-surface-dark py-4">
+<div class="container mx-auto px-4 text-sm text-gray-500 dark:text-gray-400">
+<a class="hover:text-primary" href="#">Home</a>
+<span class="mx-2">/</span>
+<a class="hover:text-primary" href="#">Products</a>
+<span class="mx-2">/</span>
+<span class="text-primary font-medium">Guava Organic Fruits</span>
+</div>
+</div>
+<main class="container mx-auto px-4 py-8 md:py-12">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+<div class="space-y-4">
+<div class="bg-white dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-xl p-8 flex items-center justify-center h-[400px]">
+<img alt="Guava Organic Fruits Main View" class="max-h-full object-contain hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBr-3dN8qy2Xy4KHEbevWagqJLTMM8se8z0n0IqodFgo74EzGdezNZrcprWOnfZGOHB_ZCmNTwfh_RkHdHkycacG-Zlx7I85ef23EbCozLvNT8RtX-QFEcXhLNCs553Eykag-6uGDX1eOi4p2eW7NK6yuNpH1lNONtBC0jzQl4QyLPCbvNwI0yPIvPzz51zpmSgarx_sEEzEN0dH6L7idYolGUJXL0DQ_-IKpWnjTUdg2grX7bgHM36wJkltdLqBAAE1nepkr41Pwgz"/>
+</div>
+<div class="grid grid-cols-3 gap-4">
+<div class="bg-white dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-xl p-4 cursor-pointer hover:border-primary transition-colors h-32 flex items-center justify-center">
+<img alt="Watermelon Slice" class="max-h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyM9pfXAvtvXyEARte4EbO_rhBPntjrIsVPEKsawz2BkfWWcEROGn0BaVUQ3MBJc_CQxgtYj1_sdljzZe7HmSVRWs-nFqTH8_jxFBNV2dMF9DUvtrmJnWjMeSID9UTOiD6ULuo7ndy8LtQgX0MTKaQkQGL9b59BHQYmy-NJ01ugZlRsxkds4i21kRu8eRASeBVfv1cqklaxXgCgzBRVqVrNlhZrZhWDdTqb-312pFMK0dH-4OJs3fb3VGOT0FQgVctY1AB0UbvS67_"/>
+</div>
+<div class="bg-white dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-xl p-4 cursor-pointer hover:border-primary transition-colors h-32 flex items-center justify-center">
+<img alt="Watermelon Pieces" class="max-h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9I8J0YM95Qd3tTCtDuELW6E2qjRiaw1wsRt0C5M32olNY5q6rnLWkeH80bKbSvUDGr9b8837E6_hDUcsTKgQIx9UpBSID-65txGGJXBmWl53HnGbviVEhVuUXD8xMfTQGEa7M794NrOv9SEiLMdiJDhgT8ElqGzl2u8PlrSsFJYLku_4MCON878Xr0MaCYLUImdBWfSQ2Qfjn7fcw815LnExElPLAY8R1hZm7ZMr0dQc02R5lw_97_dvUj73WB3Lfh-UchoWw5o2f"/>
+</div>
+<div class="bg-white dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-xl p-4 cursor-pointer hover:border-primary transition-colors h-32 flex items-center justify-center">
+<img alt="Potato Basket" class="max-h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJArALy0YaceHKfHG21jGqEu64qUCG-SI_56XQbWc4iH9471uhwjlJsK3f3m9o77asl1yLjfEGrKFcODA0eLY85AxzLM9mi4ulXHSirml7HIz7k4h2uGZvon2mP7nOpUINIQn5yD6dZwXg0g5C5JhE5cQsOOFaWFc84qrySItoUgNA12Lm0WnjQzpz0AZ-LlzBqSfMGdgjpBQopijOqvG-gDWGvBcRdOa6-QqBq0q6lG5mz5jVbhTJLb3PtYyLWVjV8qzba4sZVs_K"/>
+</div>
+</div>
+</div>
+<div class="flex flex-col">
+<h1 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-2">Guava Organic Fruits</h1>
+<div class="flex items-center gap-2 mb-4">
+<div class="flex text-yellow-400 text-sm">
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="far fa-star text-gray-300 dark:text-gray-600"></i>
+</div>
+<span class="text-sm text-gray-500 dark:text-gray-400">(1 Customer Review)</span>
+</div>
+<p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor.
+                </p>
+<ul class="mb-6 space-y-2 text-gray-700 dark:text-gray-300 text-sm font-medium">
+<li class="flex items-center gap-2"><i class="fas fa-circle text-xs text-gray-400"></i> Pellentesque habitant tristique senectus</li>
+<li class="flex items-center gap-2"><i class="fas fa-circle text-xs text-gray-400"></i> Turpis egestaVestibulum tortor quam</li>
+<li class="flex items-center gap-2"><i class="fas fa-circle text-xs text-gray-400"></i> Eugiat vitae ultricies eget tempor</li>
+</ul>
+<div class="text-3xl font-bold text-primary mb-2">47.00$</div>
+<div class="flex items-center gap-2 text-green-600 dark:text-green-400 mb-6 font-medium">
+<i class="fas fa-check-circle"></i> In stock
+                </div>
+<div class="flex flex-wrap items-center gap-4 mb-8 pb-8 border-b border-border-light dark:border-border-dark">
+<div class="flex items-center border border-border-light dark:border-border-dark rounded-md">
+<button class="px-3 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">-</button>
+<input class="w-12 text-center border-none focus:ring-0 bg-transparent py-2 font-bold dark:text-white" type="number" value="1"/>
+<button class="px-3 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">+</button>
+</div>
+<button class="bg-primary hover:bg-green-800 text-white px-8 py-3 rounded-md font-bold flex items-center gap-2 transition-colors">
+<i class="fas fa-shopping-basket"></i> Add to cart
+                    </button>
+<button class="border border-border-light dark:border-border-dark hover:border-primary hover:text-primary text-gray-700 dark:text-white px-8 py-3 rounded-md font-bold flex items-center gap-2 transition-colors">
+<i class="fas fa-exchange-alt"></i> Buy Now
+                    </button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-600 dark:text-gray-400 mb-6">
+<div><span class="font-bold text-gray-900 dark:text-gray-100">SKU:</span> BG-1027</div>
+<div><span class="font-bold text-gray-900 dark:text-gray-100">Category:</span> Vegetables</div>
+<div><span class="font-bold text-gray-900 dark:text-gray-100">Tags:</span> Sweet , Yogurt</div>
+<div><span class="font-bold text-gray-900 dark:text-gray-100">MFG:</span> 16/11/2023</div>
+</div>
+<div class="flex items-center gap-6 mb-6 text-sm font-semibold text-gray-600 dark:text-gray-400">
+<button class="flex items-center gap-2 hover:text-primary transition-colors"><i class="far fa-heart"></i> Add To Wishlist</button>
+<span class="text-gray-300">|</span>
+<button class="flex items-center gap-2 hover:text-primary transition-colors"><i class="fas fa-random"></i> Add To Compare</button>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-bold text-gray-900 dark:text-white">Share:</span>
+<a class="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-[#3b5998] hover:text-white transition-colors" href="#"><i class="fab fa-facebook-f"></i></a>
+<a class="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-[#000000] hover:text-white transition-colors" href="#"><i class="fab fa-twitter"></i></a>
+<a class="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-[#0077b5] hover:text-white transition-colors" href="#"><i class="fab fa-linkedin-in"></i></a>
+<a class="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-[#cb2027] hover:text-white transition-colors" href="#"><i class="fab fa-pinterest-p"></i></a>
+<a class="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-[#25D366] hover:text-white transition-colors" href="#"><i class="fab fa-whatsapp"></i></a>
+</div>
+</div>
+<div class="lg:col-span-1 lg:col-start-2 lg:row-start-1 lg:row-span-1 hidden lg:block absolute right-0 top-32 w-0 h-0 pointer-events-none">
+</div>
+<div class="lg:col-start-2 lg:row-start-1 lg:row-span-1 lg:pl-8 space-y-6 hidden lg:block">
+<div class="bg-surface-light dark:bg-surface-dark p-5 rounded-lg border border-border-light dark:border-border-dark space-y-4">
+<div class="flex items-start gap-4">
+<i class="fas fa-shipping-fast text-primary text-2xl mt-1"></i>
+<div>
+<h4 class="font-bold text-gray-800 dark:text-white text-sm">Free worldwide shipping on all orders over $100</h4>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<i class="fas fa-leaf text-primary text-2xl mt-1"></i>
+<div>
+<h4 class="font-bold text-gray-800 dark:text-white text-sm">Guranteed 100% Organic from natural farmas</h4>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<i class="fas fa-sync text-primary text-2xl mt-1"></i>
+<div>
+<h4 class="font-bold text-gray-800 dark:text-white text-sm">1 Day Returns if you change your mind</h4>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark p-5 rounded-lg border border-border-light dark:border-border-dark">
+<h3 class="font-bold text-gray-800 dark:text-white mb-4">Guaranteed Safe Checkout</h3>
+<div class="flex gap-2 opacity-70">
+<i class="fab fa-cc-visa text-3xl"></i>
+<i class="fab fa-cc-paypal text-3xl"></i>
+<i class="fab fa-cc-stripe text-3xl"></i>
+<i class="fab fa-cc-mastercard text-3xl"></i>
+<i class="fab fa-cc-amex text-3xl"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 md:mt-16">
+<div class="flex gap-4 border-b border-border-light dark:border-border-dark mb-8">
+<button class="bg-primary text-white px-6 py-3 rounded-t-lg font-bold">Description</button>
+<button class="bg-surface-light dark:bg-surface-dark text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 px-6 py-3 rounded-t-lg font-bold transition-colors">Reviews</button>
+</div>
+<div class="text-gray-600 dark:text-gray-300 leading-relaxed mb-8">
+<p class="mb-4">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. ibero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.ea commodo consequat. Duis aute irure dolor in reprehenderit in volup tate velitesse cillum dolore euy elit ale ruin irure dolor.uis aute irure dolor in reprehenderit n volup tate velit esse cillum,</p>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl p-6 md:p-8 flex flex-col md:flex-row gap-8 items-center">
+<div class="w-full md:w-1/3 flex justify-center">
+<img alt="Yogurt Cup" class="rounded-lg shadow-sm max-w-[200px] md:max-w-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGstKOfjwtQZPQfKYEi55RIrzwHDGJ95fLrDwCbrWwsq5EI1LzwsJ28Zwnq-EtiRz0SnFG8Bt9pQD9eZdSkEdMKm7z4R6J4k7tNDjgdKlOmemz53pOXuG1PIte2iL6c17BVuIQS6slSRnl5enCWH4qFlcdLmEebEFFi-ek2LGYPq0vwwMkjuQsJac-Veewj11ix4-ga8UqbuY1iQRlGGc87pF_7f2M4y_-gmXFOY47Es98AatqVli1-JELmCosORwNTHk2ATOxR3co"/>
+</div>
+<div class="w-full md:w-2/3">
+<h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Premium &amp; Sugar Free Yogurt</h3>
+<p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. ibero sit amet quam egestas semperAenean ultricies mi vitae est Mauris placerat eleifend.
+                    </p>
+<ul class="space-y-2 mb-4 text-gray-700 dark:text-gray-200 font-medium text-sm">
+<li class="flex items-center gap-2"><i class="fas fa-circle text-[8px]"></i> Pellentesque habitant morbi tristique senectus</li>
+<li class="flex items-center gap-2"><i class="fas fa-circle text-[8px]"></i> turpis egestaVestibulum tortor quam</li>
+<li class="flex items-center gap-2"><i class="fas fa-circle text-[8px]"></i> eugiat vitae ultricies eget tempor</li>
+<li class="flex items-center gap-2"><i class="fas fa-circle text-[8px]"></i> libero amet quam egestas</li>
+</ul>
+<p class="text-gray-600 dark:text-gray-300 text-sm">
+                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor.
+                    </p>
+</div>
+</div>
+</div>
+<div class="mt-16">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-2xl font-bold text-gray-800 dark:text-white relative pl-4 after:content-[''] after:absolute after:left-0 after:top-1/2 after:-translate-y-1/2 after:w-1 after:h-6 after:bg-primary after:rounded-full">
+                    Related Products
+                </h2>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded border border-border-light dark:border-border-dark flex items-center justify-center text-gray-400 hover:text-primary hover:border-primary transition-colors"><i class="fas fa-chevron-left"></i></button>
+<button class="w-8 h-8 rounded border border-border-light dark:border-border-dark flex items-center justify-center text-gray-400 hover:text-primary hover:border-primary transition-colors"><i class="fas fa-chevron-right"></i></button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+<div class="bg-white dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-xl p-4 group hover:shadow-lg transition-shadow relative">
+<div class="absolute top-4 left-4 z-10 flex flex-col gap-1">
+<span class="text-[10px] font-bold bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-1 rounded">Vegetables</span>
+</div>
+<button class="absolute top-4 right-4 z-10 text-gray-400 hover:text-red-500 transition-colors"><i class="far fa-heart"></i></button>
+<div class="h-40 flex items-center justify-center mb-4 overflow-hidden relative">
+<img alt="Lettuce" class="max-h-full object-contain group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCItiLxN0QoC64wcTgkRIOxNXChNgzW0Ol6UoTe57rctz74z7eKntrIVDn54ilZbq35agpb-Pr_5Ganv7bDd-L_-p5h2pDcPW6yttCR-QUx2rbNINCBAfUNdwT8uU2qOmSKtv1uRHDgsvbOvld3fYjaZtIv3NI7wnQBoPdPpg-sImYluxsGW7Ud4bBpritOrpcg6WYjvAg7SmR31kwHF_Yu0GAxGmiVeabjrs4WGO9hy9oLJnt39G42sz1lCvcU82im30f3PjG9l6-A"/>
+</div>
+<div class="flex gap-2 text-xs mb-2">
+<span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-gray-600 dark:text-gray-300">100gm</span>
+</div>
+<div class="flex items-end gap-2 mb-2">
+<span class="text-lg font-bold text-primary">19.00$</span>
+<span class="text-xs text-gray-400 line-through mb-1">22.00$</span>
+</div>
+<h3 class="text-gray-800 dark:text-white font-medium mb-2 hover:text-primary cursor-pointer truncate">Fresh Organic Lettuce</h3>
+<div class="flex text-yellow-400 text-xs mb-4">
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<span class="text-gray-400 ml-1">(5.00)</span>
+</div>
+<button class="w-full bg-surface-light dark:bg-gray-700 hover:bg-primary hover:text-white text-gray-700 dark:text-gray-200 py-2 rounded font-semibold text-sm transition-colors flex items-center justify-center gap-2">
+<i class="fas fa-shopping-basket"></i> Select Options
+                    </button>
+</div>
+<div class="bg-white dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-xl p-4 group hover:shadow-lg transition-shadow relative">
+<div class="absolute top-4 left-4 z-10 flex flex-col gap-1">
+<span class="text-[10px] font-bold bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-1 rounded">Vegetables</span>
+</div>
+<button class="absolute top-4 right-4 z-10 text-gray-400 hover:text-red-500 transition-colors"><i class="far fa-heart"></i></button>
+<div class="h-40 flex items-center justify-center mb-4 overflow-hidden relative">
+<img alt="Watermelon" class="max-h-full object-contain group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-8ffDJrNCoS2BcFp_6XpZl8ctbjAvfozrjZu9y_s9rHRgdIJtxbmoQWsq9z3m_lw2ZwXpgspb0rpI8eu0AuLraiBgGDocmcPDatr5WSL4qxyX0n0b1FksJperFpjfXeFydUFypQb9--gAbS76s4Zrgm4nVpOme7FCYibE_boWNOuJTvF3nbc-7cw53uZzxtxsci1gL8yD_jORmQTgFVUfSGkZ7g5Kh5zsaD30TpfclPeLk-BifeIKRwj8Wn4c6jfj2Ast5uXxHz5W"/>
+</div>
+<div class="flex gap-2 text-xs mb-2">
+<span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-gray-600 dark:text-gray-300">375ml</span>
+<span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-gray-600 dark:text-gray-300">500gm</span>
+</div>
+<div class="flex items-end gap-2 mb-2">
+<span class="text-lg font-bold text-primary">18.00$ - 45.00$</span>
+</div>
+<h3 class="text-gray-800 dark:text-white font-medium mb-2 hover:text-primary cursor-pointer truncate">Organic Watermelon</h3>
+<div class="flex text-yellow-400 text-xs mb-4">
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="far fa-star text-gray-300"></i>
+<span class="text-gray-400 ml-1">(4.00)</span>
+</div>
+<button class="w-full bg-surface-light dark:bg-gray-700 hover:bg-primary hover:text-white text-gray-700 dark:text-gray-200 py-2 rounded font-semibold text-sm transition-colors flex items-center justify-center gap-2">
+<i class="fas fa-shopping-basket"></i> Select Options
+                    </button>
+</div>
+<div class="bg-white dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-xl p-4 group hover:shadow-lg transition-shadow relative">
+<div class="absolute top-4 left-4 z-10 flex flex-col gap-1">
+<span class="text-[10px] font-bold bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-1 rounded">Desserts</span>
+</div>
+<button class="absolute top-4 right-4 z-10 text-gray-400 hover:text-red-500 transition-colors"><i class="far fa-heart"></i></button>
+<div class="h-40 flex items-center justify-center mb-4 overflow-hidden relative">
+<img alt="Yogurt Jar" class="max-h-full object-contain group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu3DbS502h6s-0dRUjPCN62EIqMiemc7XryjKP4nttflEfae0STcuGdHUQnwfSVTdjNJGlTYUhh3yeYhGRUmXMJQwLio5gDdydhTjvGoSPa9chLvnuAlKY9BkI-xlFOMFb0pe3N_ExbOtPod2WHYANMfIQrj9q1H4UBThx-rRD0SbRNuLZDGW20l7uCbl-eif-wfk3CoW2wTX0Hh40C2oRMjaDpMOyzIP_nmKjOb0JcM5KvKxTxRX4KRtCJuk5AVOUnzMEOuy7F4Uo"/>
+</div>
+<div class="flex gap-2 text-xs mb-2">
+<span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-gray-600 dark:text-gray-300">Sweet</span>
+</div>
+<div class="flex items-end gap-2 mb-2">
+<span class="text-lg font-bold text-primary">12.00$</span>
+<span class="text-xs text-gray-400 line-through mb-1">14.00$</span>
+</div>
+<h3 class="text-gray-800 dark:text-white font-medium mb-2 hover:text-primary cursor-pointer truncate">French Style Yogurt</h3>
+<div class="flex text-yellow-400 text-xs mb-4">
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="far fa-star text-gray-300"></i>
+<i class="far fa-star text-gray-300"></i>
+<span class="text-gray-400 ml-1">(3.00)</span>
+</div>
+<button class="w-full bg-surface-light dark:bg-gray-700 hover:bg-primary hover:text-white text-gray-700 dark:text-gray-200 py-2 rounded font-semibold text-sm transition-colors flex items-center justify-center gap-2">
+<i class="fas fa-shopping-basket"></i> Select Options
+                    </button>
+</div>
+<div class="bg-white dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-xl p-4 group hover:shadow-lg transition-shadow relative">
+<div class="absolute top-4 left-4 z-10 flex flex-col gap-1">
+<span class="text-[10px] font-bold bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-1 rounded">Desserts</span>
+</div>
+<button class="absolute top-4 right-4 z-10 text-gray-400 hover:text-red-500 transition-colors"><i class="far fa-heart"></i></button>
+<div class="h-40 flex items-center justify-center mb-4 overflow-hidden relative">
+<img alt="Cashews Jar" class="max-h-full object-contain group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpmEl7l2iqU5Lmqsg8Uik-oNitPYsV88Px6anJFL5eUQQp_zBGu49m89eS2vQ-3ixiGTdh9iIVZArYgPcjM1PUOfxCawUh8fUIBsQetNcFA7xux9mMQUS_II2afwrqMsUpwoM_7X0gwNU0bvFVu0evUfTv4sxYL0LxvFmL-bFOtZhcmRKjwISDnrB1VWdb3bBls5HzjMLsmXraHCrM67I0QERVKRwTWTu2jopYL82gYWB0w35UGjnreopbQM67O7Az8rmIUSd9f3TS"/>
+</div>
+<div class="flex gap-2 text-xs mb-2">
+<span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-gray-600 dark:text-gray-300">Sweet</span>
+</div>
+<div class="flex items-end gap-2 mb-2">
+<span class="text-lg font-bold text-primary">16.00$</span>
+<span class="text-xs text-gray-400 line-through mb-1">20.00$</span>
+</div>
+<h3 class="text-gray-800 dark:text-white font-medium mb-2 hover:text-primary cursor-pointer truncate">Salted Roasted Cashews</h3>
+<div class="flex text-yellow-400 text-xs mb-4">
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="far fa-star text-gray-300"></i>
+<span class="text-gray-400 ml-1">(4.00)</span>
+</div>
+<button class="w-full bg-surface-light dark:bg-gray-700 hover:bg-primary hover:text-white text-gray-700 dark:text-gray-200 py-2 rounded font-semibold text-sm transition-colors flex items-center justify-center gap-2">
+<i class="fas fa-shopping-basket"></i> Select Options
+                    </button>
+</div>
+<div class="bg-white dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-xl p-4 group hover:shadow-lg transition-shadow relative">
+<div class="absolute top-4 left-4 z-10 flex flex-col gap-1">
+<span class="text-[10px] font-bold bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-1 rounded">Beverage</span>
+</div>
+<button class="absolute top-4 right-4 z-10 text-gray-400 hover:text-red-500 transition-colors"><i class="far fa-heart"></i></button>
+<div class="h-40 flex items-center justify-center mb-4 overflow-hidden relative">
+<img alt="Soda Can" class="max-h-full object-contain group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3Yh4EXTTdHdlbePjz1GLZZEcD19CvEdk9J2BoMFLcKtdFYoM7DagMjFv_YtsWnJ_l_WLl73VZ9sNd7iIXetdIF2WwKOi8u8edceNSqyqG-wXLOl1P5XITNQRY2Orc4kBUgZf-IFb3dvYfoUWxyO2_TBINSs0yS1o15BVnEQMSYMFqPKDkWFcm9C9dl9JvmUXhx-aqbIiypcvbtsJBNR6bpDevDfYR1z0BB_yd0rCLEYFF1ALZvB2_Mrygx2IWZKd7oXuXN4JFkHrb"/>
+</div>
+<div class="flex gap-2 text-xs mb-2 opacity-0">
+<span class="bg-gray-100 px-2 py-1 rounded">Holder</span>
+</div>
+<div class="flex items-end gap-2 mb-2">
+<span class="text-lg font-bold text-primary">14.00$</span>
+<span class="text-xs text-gray-400 line-through mb-1">26.00$</span>
+</div>
+<span class="text-[10px] bg-red-100 text-red-600 px-1 rounded font-bold">-46%</span>
+<h3 class="text-gray-800 dark:text-white font-medium mb-2 hover:text-primary cursor-pointer truncate mt-1">Mirinda Orange Soda</h3>
+<div class="flex text-yellow-400 text-xs mb-4">
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<span class="text-gray-400 ml-1">(5.00)</span>
+</div>
+<button class="w-full bg-surface-light dark:bg-gray-700 hover:bg-primary hover:text-white text-gray-700 dark:text-gray-200 py-2 rounded font-semibold text-sm transition-colors flex items-center justify-center gap-2">
+<i class="fas fa-shopping-basket"></i> Add To Cart
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-[#15803d] text-white pt-16 pb-8 dark:bg-[#064e3b]">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+<div>
+<a class="flex items-center gap-2 text-2xl font-bold mb-6" href="#">
+<div class="bg-white p-1 rounded-lg text-primary">
+<i class="fas fa-shopping-basket text-xl"></i>
+</div>
+                        Zilly
+                    </a>
+<p class="text-green-100 text-sm mb-6 leading-relaxed">
+                        When an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    </p>
+<ul class="space-y-4 text-sm">
+<li class="flex items-start gap-3">
+<i class="fas fa-map-marker-alt mt-1"></i>
+<span>23/A Road, Newyork City</span>
+</li>
+<li class="flex items-center gap-3">
+<i class="fas fa-phone-alt"></i>
+<span>+9888-256-666</span>
+</li>
+</ul>
+<div class="flex gap-3 mt-6">
+<a class="w-8 h-8 rounded-full bg-white/20 hover:bg-accent hover:text-gray-900 flex items-center justify-center transition-colors" href="#"><i class="fab fa-facebook-f"></i></a>
+<a class="w-8 h-8 rounded-full bg-white/20 hover:bg-accent hover:text-gray-900 flex items-center justify-center transition-colors" href="#"><i class="fab fa-twitter"></i></a>
+<a class="w-8 h-8 rounded-full bg-white/20 hover:bg-accent hover:text-gray-900 flex items-center justify-center transition-colors" href="#"><i class="fab fa-instagram"></i></a>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-6">Quick Links</h3>
+<ul class="space-y-3 text-sm text-green-100">
+<li><a class="hover:text-accent transition-colors" href="#">Smartphones</a></li>
+<li><a class="hover:text-accent transition-colors" href="#">Headphones</a></li>
+<li><a class="hover:text-accent transition-colors" href="#">Laptop &amp; Tablet</a></li>
+<li><a class="hover:text-accent transition-colors" href="#">Monitors</a></li>
+<li><a class="hover:text-accent transition-colors" href="#">Printers</a></li>
+<li><a class="hover:text-accent transition-colors" href="#">Gadgets</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-6">Accounts</h3>
+<ul class="space-y-3 text-sm text-green-100">
+<li><a class="hover:text-accent transition-colors" href="#">My Orders</a></li>
+<li><a class="hover:text-accent transition-colors" href="#">Cart</a></li>
+<li><a class="hover:text-accent transition-colors" href="#">Checkout</a></li>
+<li><a class="hover:text-accent transition-colors" href="#">Compare</a></li>
+<li><a class="hover:text-accent transition-colors" href="#">My account</a></li>
+<li><a class="hover:text-accent transition-colors" href="#">Wishlist</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-6">Sign Up Newsletter</h3>
+<p class="text-green-100 text-sm mb-4">
+                        When an unknown printer took a galley of type an scrambled
+                    </p>
+<div class="flex bg-white rounded overflow-hidden mb-6 p-1">
+<input class="flex-1 border-none focus:ring-0 text-gray-800 text-sm px-3" placeholder="Your E-mail" type="email"/>
+<button class="bg-accent hover:bg-yellow-400 text-gray-900 px-4 py-2 rounded font-bold transition-colors">
+<i class="fas fa-paper-plane"></i>
+</button>
+</div>
+<h4 class="font-bold text-sm mb-3">Download App on Mobile :</h4>
+<p class="text-xs text-green-100 mb-4">15% discount on your first purchase</p>
+<div class="flex gap-2">
+<button class="bg-black text-white px-3 py-1 rounded flex items-center gap-2 hover:bg-gray-800">
+<i class="fab fa-google-play text-xl"></i>
+<div class="text-left">
+<div class="text-[8px] uppercase">Get it on</div>
+<div class="text-xs font-bold leading-none">Google Play</div>
+</div>
+</button>
+<button class="bg-black text-white px-3 py-1 rounded flex items-center gap-2 hover:bg-gray-800">
+<i class="fab fa-apple text-xl"></i>
+<div class="text-left">
+<div class="text-[8px] uppercase">Download on the</div>
+<div class="text-xs font-bold leading-none">App Store</div>
+</div>
+</button>
+</div>
+</div>
+</div>
+<div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-green-100">
+<p>© 2025 Zilly. All Rights Reserved by RadiusTheme</p>
+<div class="flex items-center gap-3">
+<i class="fab fa-cc-visa text-3xl opacity-80"></i>
+<i class="fab fa-cc-mastercard text-3xl opacity-80"></i>
+<i class="fab fa-cc-paypal text-3xl opacity-80"></i>
+<i class="fab fa-cc-amex text-3xl opacity-80"></i>
+</div>
+</div>
+</div>
+</footer>
+<div class="fixed bottom-4 left-4 z-50 bg-white dark:bg-surface-dark shadow-lg rounded-lg p-3 flex items-center gap-3 animate-bounce hidden md:flex border border-border-light dark:border-border-dark max-w-xs">
+<div class="w-12 h-12 flex-shrink-0">
+<img alt="Papaya" class="w-full h-full object-cover rounded-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW2OykEsfKww3Gd8F586P1pHZfbVt1__KE4_adCnjN4WtEC9M1tlTwL6o0XfHB881hTLhlozXJkAumJNaG_SyF6P_9yDJOSVWJhG3RGWZSDzeJ2UFDYlBwWn5WlyTEH0vnEAcCBr_mElVNkiCeemNFy-W2XstQGCDdjAX_kQV03gwmQ657_ZXNGh2GW5bqV9aEeyykLANvH41DY8I9f64bZ_oV7Vglmh48ESo4pJmppvlBQ6HEZVafQ6dtWZ7EMhVWQRY_O8mJgsEB"/>
+</div>
+<div class="text-xs">
+<p class="text-gray-500 dark:text-gray-400 mb-1">From Dhaka, Bangladesh, BD</p>
+<p class="font-bold text-gray-800 dark:text-white leading-tight mb-1">Purchased - Maxican Nature's Sweet Bounty Fresh Organic Giant Papaya</p>
+<p class="text-gray-400 text-[10px]">About 1 week ago</p>
+</div>
+<button class="absolute -top-2 -right-2 bg-gray-200 dark:bg-gray-600 rounded-full w-5 h-5 flex items-center justify-center text-xs text-gray-600 dark:text-gray-300 hover:bg-red-500 hover:text-white transition-colors">×</button>
+</div>
+<button class="fixed bottom-8 right-8 bg-white dark:bg-surface-dark shadow-lg border border-border-light dark:border-border-dark text-primary p-3 rounded-full hover:bg-primary hover:text-white transition-colors z-40 hidden md:block">
+<div class="flex flex-col items-center">
+<i class="fas fa-arrow-up"></i>
+<span class="text-[8px] font-bold uppercase mt-1">Back To Top</span>
+</div>
+</button>
+<button class="fixed bottom-24 right-8 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-colors z-40">
+<i class="fas fa-comment-dots text-xl"></i>
+</button>
+
+</body></html>
