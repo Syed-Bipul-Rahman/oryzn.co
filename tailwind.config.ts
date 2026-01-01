@@ -25,6 +25,23 @@ const config: Config = {
         display: ["Inter", "sans-serif"],
         body: ["Inter", "sans-serif"],
       },
+      animation: {
+        "float-slow": "float 4s ease-in-out infinite",
+        "float-medium": "float 3s ease-in-out infinite 0.5s",
+        "float-fast": "float 2.5s ease-in-out infinite 1s",
+        "wiggle": "wiggle 2s ease-in-out infinite",
+        "spin-slow": "spin 3s linear infinite",
+      },
+      keyframes: {
+        float: {
+          "0%, 100%": { transform: "translateY(0px) rotate(0deg)" },
+          "50%": { transform: "translateY(-15px) rotate(5deg)" },
+        },
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-6deg)" },
+          "50%": { transform: "rotate(-3deg)" },
+        },
+      },
     },
   },
   plugins: [],
