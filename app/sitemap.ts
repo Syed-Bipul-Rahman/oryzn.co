@@ -1,10 +1,10 @@
 import { MetadataRoute } from "next";
-import { products } from "@/lib/products";
+import { staticProducts } from "@/lib/products";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://orizn-store.vercel.app";
 
-  const productUrls = products.map((product) => ({
+  const productUrls = staticProducts.map((product) => ({
     url: `${baseUrl}/product/${product.id}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,

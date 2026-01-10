@@ -1,3 +1,6 @@
+import connectToDatabase from './mongodb';
+import ProductModel, { IProductDocument } from './models/Product';
+
 export interface Product {
   id: string;
   name: string;
@@ -15,7 +18,101 @@ export interface Product {
   tags?: string[];
 }
 
-export const products: Product[] = [
+// Transform MongoDB document to Product interface
+function transformProduct(doc: IProductDocument): Product {
+  return {
+    id: doc._id.toString(),
+    name: doc.name,
+    slug: doc.slug,
+    price: doc.price,
+    originalPrice: doc.originalPrice,
+    image: doc.image,
+    images: doc.images,
+    category: doc.category,
+    rating: doc.rating,
+    inStock: doc.inStock,
+    discount: doc.discount,
+    description: doc.description,
+    sku: doc.sku,
+    tags: doc.tags,
+  };
+}
+
+// Get all products
+export async function getAllProducts(): Promise<Product[]> {
+  await connectToDatabase();
+  const products = await ProductModel.find().sort({ createdAt: -1 }).lean();
+  return products.map(transformProduct);
+}
+
+// Get product by slug
+export async function getProductBySlug(slug: string): Promise<Product | null> {
+  await connectToDatabase();
+  const product = await ProductModel.findOne({ slug }).lean();
+  return product ? transformProduct(product) : null;
+}
+
+// Get product by ID
+export async function getProductById(id: string): Promise<Product | null> {
+  await connectToDatabase();
+
+  // Try to find by MongoDB ObjectId first
+  try {
+    const product = await ProductModel.findById(id).lean();
+    if (product) return transformProduct(product);
+  } catch {
+    // Not a valid ObjectId, try finding by slug
+  }
+
+  // Fallback to slug lookup
+  const product = await ProductModel.findOne({ slug: id }).lean();
+  return product ? transformProduct(product) : null;
+}
+
+// Get products by category
+export async function getProductsByCategory(category: string): Promise<Product[]> {
+  await connectToDatabase();
+  const products = await ProductModel.find({ category }).lean();
+  return products.map(transformProduct);
+}
+
+// Get hot sale products (products with discount)
+export async function getHotSaleProducts(): Promise<Product[]> {
+  await connectToDatabase();
+  const products = await ProductModel.find({ discount: { $gt: 0 } })
+    .sort({ discount: -1 })
+    .limit(5)
+    .lean();
+  return products.map(transformProduct);
+}
+
+// Get fresh vegetables (vegetables and fruits)
+export async function getFreshVegetables(): Promise<Product[]> {
+  await connectToDatabase();
+  const products = await ProductModel.find({
+    category: { $in: ['Vegetables', 'Fresh Fruits'] },
+  })
+    .limit(6)
+    .lean();
+  return products.map(transformProduct);
+}
+
+// Get frozen food and drinks
+export async function getFrozenFood(): Promise<Product[]> {
+  await connectToDatabase();
+  const products = await ProductModel.find({
+    category: { $in: ['Frozen Food', 'Drinks & Juice'] },
+  })
+    .limit(6)
+    .lean();
+  return products.map(transformProduct);
+}
+
+// ============================================
+// Static data fallback for when DB is not ready
+// ============================================
+
+export const staticProducts: Product[] = [
   {
     id: "1",
     name: "Russet Idaho Potatoes Fresh",
@@ -184,26 +281,23 @@ export const products: Product[] = [
   },
 ];
 
-export function getProductBySlug(slug: string): Product | undefined {
-  return products.find((p) => p.slug === slug);
+// Fallback functions using static data (for when DB is not configured)
+export function getStaticProductBySlug(slug: string): Product | undefined {
+  return staticProducts.find((p) => p.slug === slug);
 }
 
-export function getProductById(id: string): Product | undefined {
-  return products.find((p) => p.id === id);
+export function getStaticProductById(id: string): Product | undefined {
+  return staticProducts.find((p) => p.id === id || p.slug === id);
 }
 
-export function getProductsByCategory(category: string): Product[] {
-  return products.filter((p) => p.category === category);
+export function getStaticHotSaleProducts(): Product[] {
+  return staticProducts.filter((p) => p.discount && p.discount > 0).slice(0, 5);
 }
 
-export function getHotSaleProducts(): Product[] {
-  return products.filter((p) => p.discount && p.discount > 0).slice(0, 5);
+export function getStaticFreshVegetables(): Product[] {
+  return staticProducts.filter((p) => p.category === "Vegetables" || p.category === "Fresh Fruits").slice(0, 6);
 }
 
-export function getFreshVegetables(): Product[] {
-  return products.filter((p) => p.category === "Vegetables" || p.category === "Fresh Fruits").slice(0, 6);
-}
-
-export function getFrozenFood(): Product[] {
-  return products.filter((p) => p.category === "Frozen Food" || p.category === "Drinks & Juice").slice(0, 6);
+export function getStaticFrozenFood(): Product[] {
+  return staticProducts.filter((p) => p.category === "Frozen Food" || p.category === "Drinks & Juice").slice(0, 6);
 }

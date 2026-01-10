@@ -6,15 +6,15 @@ import Sidebar from "@/components/Sidebar";
 import ProductCard from "@/components/ProductCard";
 import ProductCardSmall from "@/components/ProductCardSmall";
 import {
-  getHotSaleProducts,
-  getFreshVegetables,
-  getFrozenFood,
+  getStaticHotSaleProducts,
+  getStaticFreshVegetables,
+  getStaticFrozenFood,
 } from "@/lib/products";
 
 export default function Home() {
-  const hotSaleProducts = getHotSaleProducts();
-  const vegetables = getFreshVegetables();
-  const frozenFood = getFrozenFood();
+  const hotSaleProducts = getStaticHotSaleProducts();
+  const vegetables = getStaticFreshVegetables();
+  const frozenFood = getStaticFrozenFood();
 
   return (
     <>
