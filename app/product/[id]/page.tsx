@@ -4,21 +4,15 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { getStaticProductById, staticProducts } from "@/lib/products";
+import { getProductById } from "@/lib/products";
 
 interface Props {
   params: Promise<{ id: string }>;
 }
 
-export async function generateStaticParams() {
-  return staticProducts.map((product) => ({
-    id: product.id,
-  }));
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
-  const product = getStaticProductById(id);
+  const product = await getProductById(id);
 
   if (!product) {
     return {
@@ -61,7 +55,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params }: Props) {
   const { id } = await params;
-  const product = getStaticProductById(id);
+  const product = await getProductById(id);
 
   if (!product) {
     notFound();
