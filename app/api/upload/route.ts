@@ -1,10 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { v2 as cloudinary } from 'cloudinary';
 
-// Cloudinary is auto-configured via CLOUDINARY_URL environment variable
+// Explicitly configure Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME || 'drguqwqgd',
+  api_key: process.env.CLOUDINARY_API_KEY || '171748817748189',
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 export async function POST(request: NextRequest) {
   try {
+    // Check if Cloudinary is configured
+    if (!process.env.CLOUDINARY_API_SECRET && !process.env.CLOUDINARY_URL) {
+      console.error('Cloudinary not configured. Missing CLOUDINARY_API_SECRET or CLOUDINARY_URL');
+      return NextResponse.json(
+        { error: 'Image upload service not configured' },
+        { status: 500 }
+      );
+    }
+
     const formData = await request.formData();
     const files = formData.getAll('files') as File[];
 
@@ -45,8 +59,9 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     console.error('Upload error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json(
-      { error: 'Failed to upload files' },
+      { error: `Failed to upload: ${errorMessage}` },
       { status: 500 }
     );
   }
