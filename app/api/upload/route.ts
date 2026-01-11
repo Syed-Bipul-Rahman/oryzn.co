@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { writeFile, mkdir } from 'fs/promises';
-import path from 'path';
-import { existsSync } from 'fs';
+import { v2 as cloudinary } from 'cloudinary';
+
+// Cloudinary is auto-configured via CLOUDINARY_URL environment variable
 
 export async function POST(request: NextRequest) {
   try {
@@ -15,13 +15,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const uploadDir = path.join(process.cwd(), 'public', 'uploads');
-
-    // Ensure uploads directory exists
-    if (!existsSync(uploadDir)) {
-      await mkdir(uploadDir, { recursive: true });
-    }
-
     const uploadedUrls: string[] = [];
 
     for (const file of files) {
@@ -32,19 +25,18 @@ export async function POST(request: NextRequest) {
         );
       }
 
-      // Generate unique filename
-      const timestamp = Date.now();
-      const randomStr = Math.random().toString(36).substring(2, 8);
-      const extension = file.name.split('.').pop() || 'jpg';
-      const filename = `${timestamp}-${randomStr}.${extension}`;
-
+      // Convert file to base64
       const bytes = await file.arrayBuffer();
       const buffer = Buffer.from(bytes);
+      const base64 = `data:${file.type};base64,${buffer.toString('base64')}`;
 
-      const filePath = path.join(uploadDir, filename);
-      await writeFile(filePath, buffer);
+      // Upload to Cloudinary
+      const result = await cloudinary.uploader.upload(base64, {
+        folder: 'products',
+        resource_type: 'image',
+      });
 
-      uploadedUrls.push(`/api/uploads/${filename}`);
+      uploadedUrls.push(result.secure_url);
     }
 
     return NextResponse.json({
