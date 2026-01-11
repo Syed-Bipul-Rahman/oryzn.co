@@ -3,6 +3,7 @@ import Link from "next/link";
 
 interface ProductCardProps {
   id: string;
+  slug: string;
   name: string;
   price: number;
   originalPrice?: number;
@@ -14,7 +15,7 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({
-  id,
+  slug,
   name,
   price,
   originalPrice,
@@ -26,7 +27,7 @@ export default function ProductCard({
 }: ProductCardProps) {
   return (
     <Link
-      href={`/product/${id}`}
+      href={`/product/${slug}`}
       className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-100 dark:border-gray-700 hover:shadow-lg transition group block"
     >
       <article>

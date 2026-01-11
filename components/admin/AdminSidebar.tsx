@@ -15,6 +15,11 @@ const menuItems = [
     icon: 'inventory_2',
   },
   {
+    name: 'Categories',
+    href: '/admin/categories',
+    icon: 'category',
+  },
+  {
     name: 'View Store',
     href: '/',
     icon: 'storefront',

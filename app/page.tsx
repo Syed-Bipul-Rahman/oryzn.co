@@ -126,6 +126,7 @@ export default async function Home() {
                 <ProductCard
                   key={product.id}
                   id={product.id}
+                  slug={product.slug}
                   name={product.name}
                   price={product.price}
                   originalPrice={product.originalPrice}
@@ -170,6 +171,7 @@ export default async function Home() {
                 <ProductCardSmall
                   key={product.id}
                   id={product.id}
+                  slug={product.slug}
                   name={product.name}
                   price={product.price}
                   originalPrice={product.originalPrice}
@@ -213,6 +215,7 @@ export default async function Home() {
                 <ProductCardSmall
                   key={product.id}
                   id={product.id}
+                  slug={product.slug}
                   name={product.name}
                   price={product.price}
                   originalPrice={product.originalPrice}

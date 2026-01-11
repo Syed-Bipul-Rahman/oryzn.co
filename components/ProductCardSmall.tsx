@@ -3,6 +3,7 @@ import Link from "next/link";
 
 interface ProductCardSmallProps {
   id: string;
+  slug: string;
   name: string;
   price: number;
   originalPrice?: number;
@@ -13,7 +14,7 @@ interface ProductCardSmallProps {
 }
 
 export default function ProductCardSmall({
-  id,
+  slug,
   name,
   price,
   originalPrice,
@@ -24,7 +25,7 @@ export default function ProductCardSmall({
 }: ProductCardSmallProps) {
   return (
     <Link
-      href={`/product/${id}`}
+      href={`/product/${slug}`}
       className="bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-100 dark:border-gray-700 hover:shadow-md transition group block"
     >
       <article>

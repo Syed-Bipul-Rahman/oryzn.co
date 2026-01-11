@@ -25,16 +25,12 @@ interface ProductFormProps {
   isEditing?: boolean;
 }
 
-const categories = [
-  'Vegetables',
-  'Fresh Fruits',
-  'Drinks & Juice',
-  'Frozen Food',
-  'Desserts',
-  'Dairy',
-  'Bakery',
-  'Meat & Seafood',
-];
+interface Category {
+  id: string;
+  name: string;
+  slug: string;
+  isActive: boolean;
+}
 
 export default function ProductForm({ initialData, isEditing = false }: ProductFormProps) {
   const router = useRouter();
@@ -45,6 +41,8 @@ export default function ProductForm({ initialData, isEditing = false }: ProductF
   const [additionalImagePreviews, setAdditionalImagePreviews] = useState<string[]>(
     initialData?.images || []
   );
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [isLoadingCategories, setIsLoadingCategories] = useState(true);
 
   const mainImageInputRef = useRef<HTMLInputElement>(null);
   const additionalImagesInputRef = useRef<HTMLInputElement>(null);
@@ -59,7 +57,7 @@ export default function ProductForm({ initialData, isEditing = false }: ProductF
     originalPrice: initialData?.originalPrice,
     image: initialData?.image || '',
     images: initialData?.images || [],
-    category: initialData?.category || 'Vegetables',
+    category: initialData?.category || '',
     rating: initialData?.rating || 5,
     inStock: initialData?.inStock ?? true,
     discount: initialData?.discount,
@@ -69,6 +67,30 @@ export default function ProductForm({ initialData, isEditing = false }: ProductF
   });
 
   const [tagsInput, setTagsInput] = useState(initialData?.tags?.join(', ') || '');
+
+  // Fetch categories from API
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch('/api/categories');
+        if (response.ok) {
+          const data = await response.json();
+          const activeCategories = data.filter((cat: Category) => cat.isActive);
+          setCategories(activeCategories);
+          // Set default category if not editing and categories are available
+          if (!isEditing && !initialData?.category && activeCategories.length > 0) {
+            setFormData((prev) => ({ ...prev, category: activeCategories[0].name }));
+          }
+        }
+      } catch (err) {
+        console.error('Failed to fetch categories:', err);
+      } finally {
+        setIsLoadingCategories(false);
+      }
+    };
+
+    fetchCategories();
+  }, [isEditing, initialData?.category]);
 
   // Auto-generate slug from name
   useEffect(() => {
@@ -408,14 +430,26 @@ export default function ProductForm({ initialData, isEditing = false }: ProductF
               value={formData.category}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-[#e53935]"
+              disabled={isLoadingCategories}
+              className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-[#e53935] disabled:opacity-50"
             >
-              {categories.map((cat) => (
-                <option key={cat} value={cat}>
-                  {cat}
-                </option>
-              ))}
+              {isLoadingCategories ? (
+                <option>Loading categories...</option>
+              ) : categories.length === 0 ? (
+                <option value="">No categories available</option>
+              ) : (
+                categories.map((cat) => (
+                  <option key={cat.id} value={cat.name}>
+                    {cat.name}
+                  </option>
+                ))
+              )}
             </select>
+            {!isLoadingCategories && categories.length === 0 && (
+              <p className="text-xs text-yellow-500 mt-1">
+                Please create a category first in the Categories section
+              </p>
+            )}
           </div>
 
           {/* Price and Original Price */}
