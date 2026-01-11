@@ -37,6 +37,7 @@ export default function ProductCard({
             src={image}
             width={112}
             height={112}
+            unoptimized
           />
           {category && (
             <span className="absolute top-0 left-0 text-[10px] text-gray-500 bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5 rounded">

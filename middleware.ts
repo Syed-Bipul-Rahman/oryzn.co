@@ -4,6 +4,12 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // Redirect /uploads/* to /api/uploads/* for dynamically uploaded files
+  if (pathname.startsWith('/uploads/')) {
+    const filename = pathname.replace('/uploads/', '');
+    return NextResponse.rewrite(new URL(`/api/uploads/${filename}`, request.url));
+  }
+
   // Check if the request is for admin routes (except login)
   if (pathname.startsWith('/admin') && !pathname.startsWith('/admin/login')) {
     const token = request.cookies.get('admin_token')?.value;
@@ -50,5 +56,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/admin/:path*'],
+  matcher: ['/admin/:path*', '/uploads/:path*'],
 };

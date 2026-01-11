@@ -145,6 +145,7 @@ export default async function ProductPage({ params }: Props) {
                   height={400}
                   priority
                   itemProp="image"
+                  unoptimized
                 />
               </div>
               {productImages.length > 1 && (
@@ -160,6 +161,7 @@ export default async function ProductPage({ params }: Props) {
                         src={img}
                         width={100}
                         height={100}
+                        unoptimized
                       />
                     </button>
                   ))}

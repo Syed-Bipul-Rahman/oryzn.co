@@ -118,6 +118,7 @@ export default function ProductTable({ products }: ProductTableProps) {
                             alt={product.name}
                             fill
                             className="object-cover"
+                            unoptimized
                           />
                         </div>
                         <div>

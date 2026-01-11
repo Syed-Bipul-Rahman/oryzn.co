@@ -35,6 +35,7 @@ export default function ProductCardSmall({
             src={image}
             width={80}
             height={80}
+            unoptimized
           />
         </div>
 
